@@ -4,8 +4,8 @@ export default function Footer() {
       <div className="footer__inner container">
         <div className="footer__brand">
           <span className="nav__logo">Olabode</span>
-          <p>Product &amp; Transformation Leader.</p>
-          <p className="footer__since">Lagos, Nigeria &middot; Open to opportunities &middot; Since 2012</p>
+          <p>Product Leader &mdash; Banking, Payments &amp; Agentic AI.</p>
+          <p className="footer__since">Lagos, Nigeria &middot; Open to remote and relocation &middot; Since 2014</p>
         </div>
         <div className="footer__nav">
           <div>
@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
           <div>
             <h5>Social</h5>
-            <a href="https://www.linkedin.com/in/consultjosh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/olabodeafrica/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://x.com/olabode_africa" target="_blank" rel="noopener noreferrer">Twitter / X</a>
             <a href="#">Medium</a>
           </div>

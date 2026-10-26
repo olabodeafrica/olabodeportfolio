@@ -87,6 +87,16 @@ export interface CaseStudyCard {
 
 export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
+    slug: 'omni',
+    tag: 'Banking · OMNI Channel · Multi-Market · Inlaks',
+    title: 'One banking suite, five countries — retail, corporate, WhatsApp, voice and CRM.',
+    description:
+      "I own the OMNI Channel banking suite at Inlaks: retail and corporate internet banking, WhatsApp banking, voice banking, paperless branch operations and CRM, delivered to banks in Nigeria, Kenya, Tanzania, Liberia and Sierra Leone as a single platform. That means strategy, roadmap and pricing across six product lines — plus multi-bank and multi-currency localisation, core banking integration, and the adoption work that decides whether any of it actually gets used.",
+    bgColor: '#102a43',
+    visualType: 'board',
+    layout: 'left',
+  },
+  {
     slug: 'pierflow',
     tag: 'Healthtech · API Platform · 0→1 · West Africa',
     title: 'Building the connectivity layer for healthcare in Africa.',
@@ -104,9 +114,9 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · Nigeria',
-    title: "Building Nigeria's first consumer tax platform — ₦25M+ revenue in month one.",
+    title: "From tax filing to full corporate compliance — Nigeria's first digital-first tax platform.",
     description:
-      "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and SMEs. In six months, with two engineers, we launched five product modules including tax profiling, business registration, invoicing, and advisory booking, generating ₦25M+ in our first month of trading.",
+      "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and small businesses. In six months, with two engineers, we shipped five modules across tax registration, invoicing, advisory and tax clearance. I then expanded the business model beyond tax filing into know-your-business (KYB) services for corporates — adding Corporate Affairs Commission company registration and statutory filings, which became the platform's fastest-growing revenue line in its first months of trading.",
     bgColor: '#fce8d5',
     visualType: 'window',
     layout: 'right',
@@ -117,7 +127,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     tag: 'Fintech · Government · West Africa',
     title: 'A payment platform that crossed borders — and changed behaviour.',
     description:
-      "Led CPay from concept to live deployment across Liberia and Sierra Leone — expanding into five new government MDAs and generating over $1M in revenue. The real challenge wasn't the build; it was getting institutions to change how they moved money. I drove the adoption strategy alongside the product.",
+      "Led CPay from concept to live deployment across Liberia and Sierra Leone — expanding into five new government ministries, departments and agencies (MDAs) and generating over $1M in revenue. The real challenge wasn't the build; it was getting institutions to change how they moved money. I drove the adoption strategy alongside the product.",
     bgColor: '#d4edda',
     visualType: 'window',
     layout: 'left',
@@ -126,9 +136,9 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     slug: 'amis',
     tag: 'Government · SaaS · Financial Oversight',
-    title: 'Turning a one-off government tool into a $2M SaaS platform.',
+    title: 'Turning a one-off government tool into a $30M SaaS platform.',
     description:
-      'Designed an Audit Management Information System for the Sierra Leone Government — then repositioned it as a multi-tenant SaaS product. Defined the product vision, mapped the customer journey from manual audit workflows to a digitised system, and aligned a cross-functional team on a roadmap targeting $2M in recurring revenue over five years.',
+      'Designed an Audit Management Information System for the Sierra Leone Government — then repositioned it as a multi-tenant SaaS product. Defined the product vision, mapped the customer journey from manual audit workflows to a digitised system, and aligned a cross-functional team on a roadmap targeting $30M in recurring revenue over five years.',
     bgColor: '#e8eaf6',
     visualType: 'emoji',
     layout: 'right',
@@ -139,7 +149,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     tag: 'Healthtech · Insurance · Africa',
     title: 'Health insurance that actually works for the people using it.',
     description:
-      'Built a health insurance management suite for SUNU Health, serving operations across multiple African markets. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction. Deep stakeholder mapping drove the product requirements.',
+      'Built a health insurance management suite for SUNU Health, serving operations across 17 countries. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction. Deep stakeholder mapping drove the product requirements.',
     bgColor: '#fff8e1',
     visualType: 'chat',
     layout: 'left',
@@ -157,28 +167,50 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   },
   {
     slug: 'bban',
-    tag: 'Fintech · Fraud Prevention · Central Bank',
-    title: "A $250K contract won by solving a problem nobody had named yet.",
+    tag: 'Payment Infrastructure · Central Bank · API Product',
+    title: "The account-validation layer a central bank now runs on.",
     description:
-      "Identified a critical gap in CPay's payment validation layer and led the design of a BBAN Validator and Account Mapper feature — securing a $250,000 contract with the Central Bank of Liberia. This came from listening to users, not just managing requirements. Deep customer journey analysis revealed the root cause behind recurring payment errors and fraud incidents.",
+      "Designed Account Mapper, the national account-validation and BBAN layer adopted by the Central Bank of Liberia under the World Bank-funded LIFT-P programme. I defined the Ingress and Name Enquiry API contracts, versioning and acceptance testing, drove integration across nine commercial banks, and had the architecture reviewed against digital public infrastructure standards — closing $400,000 of revenue leakage from payment errors and fraud along the way.",
     bgColor: '#f3e5f5',
     visualType: 'chart',
     layout: 'left',
     image: { src: '/assets/CPay Brainstorming.jpeg', alt: 'CPay team brainstorming session' },
   },
   {
-    slug: 'isendapp',
-    tag: 'Logistics · 0→1 · Growth',
-    title: 'iSendApp: from product concept to 1,000 users without a marketing budget.',
+    slug: 'innkorp',
+    tag: 'RegTech · KYB · API Platform · 0→1',
+    title: 'Register once, verify everywhere — KYB infrastructure for African businesses.',
     description:
-      'Advised iSendApp as they transformed a logistics concept into a scalable business. Shaped the MVP scope, defined the customer journey from first touch to retained user, and co-designed the GTM strategy that drove their first 1,000 users — with meaningfully improved retention from day one.',
-    bgColor: '#e0f7fa',
+      "As embedded Head of Product at Innkorp, I lead a know-your-business platform that registers companies with Nigeria's Corporate Affairs Commission and stores the resulting records in a vault the business owns — reusable for bank and fintech onboarding under itemised, revocable consent. I own the partner API surface: handoff contracts, payload encryption, webhook delivery guarantees, request logging and an embeddable verification widget, plus the commercial packaging that took it to fintech platforms including PiggyVest.",
+    bgColor: '#e8f5e9',
     visualType: 'icons',
     layout: 'right',
   },
 ];
 
 export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: 'omni',
+    tag: 'Banking · OMNI Channel · Multi-Market · Inlaks Limited',
+    title: 'One banking suite, five countries — retail, corporate, WhatsApp, voice and CRM.',
+    summary:
+      'The OMNI Channel suite is how a bank meets its customers everywhere at once: retail and corporate internet banking, WhatsApp banking, voice banking, paperless branch operations and CRM, running on one platform rather than five separate procurements. I own strategy, roadmap and pricing across the portfolio, and the multi-market rollout into banks in Nigeria, Kenya, Tanzania, Liberia and Sierra Leone.',
+    meta: [
+      { label: 'Role', value: 'Lead, Banking Product Management & User Experience' },
+      { label: 'Company', value: 'Inlaks Limited · 2020–Present' },
+      { label: 'Focus Areas', value: 'Portfolio Strategy · Pricing · Roadmap Management · Core Banking Integration' },
+      { label: 'Scope', value: '6 product lines · 5 countries · teams of up to 20' },
+    ],
+    tabs: ['01 · Context', '02 · Problem Framing', '03 · The Suite', '04 · Pricing & Roadmap', '05 · Adoption', '06 · Outcomes'],
+    steps: [
+      { number: 'Step 01 — Context', heading: 'Banks were buying channels one at a time — and paying for it twice.', body: [{ type: 'paragraph', html: 'A bank buys internet banking from one vendor, a mobile app from another, a CRM from a third, and a chatbot from whoever pitched last. Each arrives with its own integration into core banking, its own authentication, its own audit trail and its own release cycle. The customer feels the seams immediately: a limit changed on the web does not show up on WhatsApp.' }, { type: 'callout', text: 'The cost of fragmentation is not the licence fees. It is that every channel has to be separately integrated, separately secured, and separately explained to a regulator.' }], nav: { nextLabel: 'Next: Problem Framing →', nextStep: 1 } },
+      { number: 'Step 02 — Problem Framing', heading: 'One core integration, many front doors.', body: [{ type: 'paragraph', html: 'I framed the portfolio around a single question: what if the bank integrated once and gained every channel? That reframes the product from a collection of apps into a platform with shared integration, shared entitlements and shared audit — and it changes the commercial conversation from per-product licensing to platform adoption.' }, { type: 'callout', text: 'How might a bank serve retail and corporate customers across web, mobile, WhatsApp, voice and branch — from one integration into core banking, with one set of limits, entitlements and audit trails?' }], nav: { prevLabel: '← Context', prevStep: 0, nextLabel: 'Next: The Suite →', nextStep: 2 } },
+      { number: 'Step 03 — The Suite', heading: 'Six product lines that share a spine.', body: [{ type: 'insightList', items: [{ strong: 'Retail internet and mobile banking:', text: 'Everyday transfers, bills and self-service for individual customers.' }, { strong: 'Corporate internet banking:', text: 'Multi-level payment authorisation, bulk payments and mandate structures that mirror how a company actually approves money leaving the building.' }, { strong: 'WhatsApp banking:', text: 'Conversational balance, transfers and support on the channel customers already live in, with no app install required.' }, { strong: 'Voice banking:', text: 'Reaching customers on feature phones and low-bandwidth connections, which is still how a large share of the market banks.' }, { strong: 'Paperless branch operations:', text: 'Digitising in-branch account opening and request workflows so the branch stops being the slow path.' }, { strong: 'CRM:', text: 'One customer view across every channel, so a complaint raised on WhatsApp is visible to the branch officer.' }] }, { type: 'callout', text: 'The hardest design work was entitlements. A corporate approval chain has to behave identically whether the approver is on web, mobile or WhatsApp — otherwise the channel becomes a compliance hole rather than a convenience.' }], nav: { prevLabel: '← Problem Framing', prevStep: 1, nextLabel: 'Next: Pricing & Roadmap →', nextStep: 3 } },
+      { number: 'Step 04 — Pricing & Roadmap', heading: 'Packaging the platform so a tier-3 bank and a tier-1 bank can both buy it.', body: [{ type: 'paragraph', html: 'I own pricing and the multi-year roadmap across the portfolio. Banks in these five markets differ enormously in size, regulatory regime and currency, so a single price list fails immediately. I set commercial packaging by bank tier and market, and sequenced the roadmap so shared platform work landed before channel-specific features.' }, { type: 'insightList', items: [{ strong: 'Tiered packaging:', text: 'Channel bundles priced so a smaller bank can start with retail and WhatsApp and add corporate later, without re-platforming.' }, { strong: 'Localisation as capability, not custom work:', text: 'Multi-currency, language and regulatory variance treated as platform capability rather than per-deal bespoke build.' }, { strong: 'Shared-spine sequencing:', text: 'Entitlements, audit and core banking integration prioritised ahead of individual channel features, because every channel depends on them.' }] }], nav: { prevLabel: '← The Suite', prevStep: 2, nextLabel: 'Next: Adoption →', nextStep: 4 } },
+      { number: 'Step 05 — Adoption', heading: 'The deployment is not finished when it goes live.', body: [{ type: 'paragraph', html: 'Across every market the pattern held: the technical rollout was the easy half. What determined whether a bank actually moved its customers onto the suite was the adoption programme — and I built that alongside the product rather than after it.' }, { type: 'insightList', items: [{ strong: 'Super-user networks:', text: 'One trained advocate inside each bank before wider launch, acting as the internal help desk and the proof point for colleagues.' }, { strong: 'Onboarding on real transactions:', text: 'Training run on the transaction types staff actually process, never on hypothetical demo data.' }, { strong: '30-day post-launch cycles:', text: 'Structured check-ins that surface friction while it is still cheap to fix.' }] }, { type: 'callout', text: 'User acceptance testing with the bank is where product decisions get made honestly. It is the first time anyone outside the project sees the thing under real conditions.' }], nav: { prevLabel: '← Pricing & Roadmap', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
+      { number: 'Step 06 — Outcomes', heading: 'Five countries, one platform, six channels.', body: [{ type: 'outcomeGrid', items: [{ stat: '5', label: 'Countries live: Nigeria, Kenya, Tanzania, Liberia, Sierra Leone' }, { stat: '6', label: 'Product lines owned on a shared platform spine' }, { stat: '1', label: 'Core banking integration per bank, serving every channel' }, { stat: '20', label: 'Cross-functional team members directed at peak, with very low turnover' }] }, { type: 'paragraph', html: 'The portfolio view is what makes this compound. Every market deployment improves the localisation capability the next one inherits, and every channel added to the shared spine costs less than the one before it.' }], nav: { prevLabel: '← Adoption', prevStep: 4, backToWork: true } },
+    ],
+  },
   {
     slug: 'pierflow',
     tag: 'Healthtech · API Platform · 0→1 · Pierflow',
@@ -328,14 +360,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · SpireCore',
     title:
-      "Building Nigeria's first consumer tax platform — from a blank page to ₦25M+ revenue in month one.",
+      "From tax filing to full corporate compliance — building Nigeria's first digital-first tax platform.",
     summary:
       "Taxspire is SpireCore's flagship product: a Nigerian-first platform that automates tax compliance, business registration, and financial advisory for entrepreneurs, freelancers, and SMEs. I joined as the founding product lead — not just as a PM, but as a builder, strategist, and growth driver. In six months, with a team of two engineers, we launched multiple product modules, generated our first revenue within weeks, and built a growth engine that compounded from day one.",
     meta: [
       { label: 'Role', value: 'Head of Product & Growth (Founding)' },
-      { label: 'Company', value: 'SpireCore (Taxspire) · 2025–Present' },
+      { label: 'Company', value: 'SpireCore (Taxspire) · 2025–2026' },
       { label: 'Focus Areas', value: '0→1 Product · Growth Strategy · CX Design · Regulatory Navigation' },
-      { label: 'Outcome', value: '₦25M+ revenue · Month-one launch · Multiple live modules' },
+      { label: 'Outcome', value: '5 live modules · KYB expansion · Two-engineer team' },
     ],
     tabs: [
       '01 · Context & Entry',
@@ -434,18 +466,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         number: 'Step 06 — Outcomes',
-        heading: '₦25M+ in month one. A platform still accelerating.',
+        heading: 'From tax tool to compliance platform — and still accelerating.',
         body: [
           {
             type: 'outcomeGrid',
             items: [
-              { stat: '₦25M+', label: 'Revenue generated within the first month of launch' },
+              { stat: 'KYB', label: 'Corporate registration and filings became the fastest-growing revenue line' },
               { stat: '6 mo.', label: 'From blank page to live multi-module platform with paying customers' },
               { stat: '2 eng.', label: 'Full platform shipped by one frontend and one backend engineer' },
               { stat: '5+', label: 'Live product modules: tax profile, business registration, invoicing, advisory, TCC' },
             ],
           },
-          { type: 'paragraph', html: 'The revenue result was the headline — but what it represented was more important: proof that the journey model worked. Users who came for business registration discovered tax filing. Users who filed taxes booked advisory sessions. The cross-sell loops we designed into the product were converting from week one.' },
+          { type: 'paragraph', html: 'The commercial result mattered less than what it proved: the journey model worked. Users who came for business registration discovered tax filing. Users who filed taxes booked advisory sessions. The cross-sell loops we designed into the product were converting from week one — and the KYB expansion gave corporates a reason to arrive in the first place.' },
           { type: 'paragraph', html: "The platform is actively growing. Near-term roadmap includes direct API integrations with Nigerian fintechs — enabling KYC document fulfilment as an embedded service within third-party platforms — and a payroll module that extends Taxspire further into the SME compliance lifecycle. The ambition is Stripe for African compliance infrastructure: not a tax tool, but the compliance layer that every Nigerian business runs on." },
           { type: 'callout', text: "The lesson from this project: in a market where nobody wants your product category, the route to adoption is making the journey so useful at every step that compliance becomes incidental to value. We didn't build a tax app. We built a business companion that happens to keep you compliant." },
         ],
@@ -458,7 +490,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     tag: 'Fintech · Government · West Africa · Inlaks Limited',
     title: 'A payment platform that crossed borders — and changed behaviour.',
     summary:
-      'CPay started as a single-country payment solution. I led its evolution into a cross-border government payment platform across Liberia and Sierra Leone — expanding into five new MDAs and generating over $1M in revenue. The hardest part wasn\'t the build. It was getting entrenched institutions to change how they moved public money.',
+      'CPay started as a single-country payment solution. I led its evolution into a cross-border government payment platform across Liberia and Sierra Leone — expanding into five new government ministries, departments and agencies (MDAs) and generating over $1M in revenue. The hardest part wasn\'t the build. It was getting entrenched institutions to change how they moved public money.',
     meta: [
       { label: 'Role', value: 'Senior Product Manager' },
       { label: 'Timeline', value: '2020 – Present' },
@@ -580,14 +612,14 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: 'amis',
     tag: 'Government · SaaS · Financial Oversight · Inlaks Limited',
-    title: 'Turning a one-off government tool into a $2M SaaS platform.',
+    title: 'Turning a one-off government tool into a $30M SaaS platform.',
     summary:
-      "What began as a custom Audit Management Information System for the Sierra Leone Government became the blueprint for a multi-tenant SaaS product. I led the pivot — defining the vision, mapping the customer journey from fragmented manual audit workflows to a digitised platform, and building the roadmap to $2M in recurring revenue over five years.",
+      "What began as a custom Audit Management Information System for the Sierra Leone Government became the blueprint for a multi-tenant SaaS product. I led the pivot — defining the vision, mapping the customer journey from fragmented manual audit workflows to a digitised platform, and building the roadmap to $30M in recurring revenue over five years.",
     meta: [
       { label: 'Role', value: 'Senior Product Manager' },
       { label: 'Client', value: 'Sierra Leone Government' },
       { label: 'Focus Areas', value: 'Product Strategy · SaaS Pivot · CX Design' },
-      { label: 'Target', value: '$2M recurring revenue (5-year roadmap)' },
+      { label: 'Target', value: '$30M recurring revenue (5-year roadmap)' },
     ],
     tabs: [
       '01 · Discovery',
@@ -667,13 +699,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         number: 'Step 05 — Roadmap',
         heading: 'A 5-year roadmap built backwards from the revenue target.',
         body: [
-          { type: 'paragraph', html: 'With the platform architecture confirmed, I built the product roadmap in three phases designed around the $2M recurring revenue target.' },
+          { type: 'paragraph', html: 'With the platform architecture confirmed, I built the product roadmap in three phases designed around the $30M recurring revenue target.' },
           {
             type: 'insightList',
             items: [
               { strong: 'Phase 1 — Core Deployment (Year 1):', text: 'Sierra Leone Audit Service live. Full audit lifecycle management, offline field capture, and executive reporting dashboard. Establish reference client credentials and case study.' },
               { strong: 'Phase 2 — Platform Expansion (Year 2–3):', text: 'Two additional West African government audit bodies onboarded. Introduce API integrations with existing government financial management systems. Refine configuration tooling based on real onboarding experience.' },
-              { strong: 'Phase 3 — Scale (Year 4–5):', text: 'Self-service configuration portal allowing new government clients to onboard without Inlaks professional services. Introduce analytics module with cross-country benchmarking. Target 8 active government clients for $2M ARR.' },
+              { strong: 'Phase 3 — Scale (Year 4–5):', text: 'Self-service configuration portal allowing new government clients to onboard without Inlaks professional services. Introduce analytics module with cross-country benchmarking. Target 8 active government clients for $30M ARR.' },
             ],
           },
           { type: 'callout', text: "The roadmap was written as a strategic narrative, not just a feature list — each phase had a hypothesis about market behaviour and a clear success metric. This made it a living planning document, not a contract." },
@@ -687,7 +719,7 @@ export const CASE_STUDIES: CaseStudy[] = [
           {
             type: 'outcomeGrid',
             items: [
-              { stat: '$2M', label: 'Targeted recurring revenue over 5-year roadmap' },
+              { stat: '$30M', label: 'Targeted recurring revenue over 5-year roadmap' },
               { stat: '1→N', label: 'Architecture designed for multi-government deployment' },
               { stat: '14wk', label: 'Average finding-to-resolution time targeted for reduction' },
               { stat: '4', label: 'Distinct user roles mapped with full journey blueprints' },
@@ -704,12 +736,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: 'sunu',
     tag: 'Healthtech · Insurance · Africa · SUNU Health',
     title: 'Health insurance that actually works for the people using it.',
-    summary: 'Built a health insurance management suite for SUNU Health, serving operations across multiple African markets. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction.',
+    summary: 'Built a health insurance management suite for SUNU Health, serving operations across 17 countries. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction.',
     meta: [
       { label: 'Role', value: 'Senior Product Manager' },
       { label: 'Company', value: 'SUNU Health' },
       { label: 'Focus Areas', value: 'CX Design · Stakeholder Mapping · Ops Redesign' },
-      { label: 'Scope', value: 'Multi-country Africa deployment' },
+      { label: 'Scope', value: '17-country Africa deployment' },
     ],
     tabs: ['01 · Discovery', '02 · Problem Framing', '03 · Stakeholder Mapping', '04 · Product Design', '05 · Delivery', '06 · Outcomes'],
     steps: [
@@ -743,36 +775,37 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    slug: 'isendapp',
-    tag: 'Logistics · 0→1 · Growth',
-    title: 'iSendApp: from product concept to 1,000 users without a marketing budget.',
-    summary: 'Advised iSendApp as they transformed a logistics concept into a scalable business. Shaped the MVP scope, defined the customer journey from first touch to retained user, and co-designed the GTM strategy that drove their first 1,000 users.',
+    slug: 'innkorp',
+    tag: 'RegTech · KYB · API Platform · Innkorp',
+    title: 'Register once, verify everywhere — KYB infrastructure for African businesses.',
+    summary:
+      "Innkorp registers businesses with Nigeria's Corporate Affairs Commission and stores the resulting records in a vault the business owns, so a company proves itself once and reuses that proof everywhere. As embedded Head of Product I own the roadmap, the partner API surface and the commercial packaging that puts verified business identity inside banks and fintechs.",
     meta: [
-      { label: 'Role', value: 'Product Advisor' },
-      { label: 'Company', value: 'iSendApp' },
-      { label: 'Focus Areas', value: 'MVP Scoping · GTM Strategy · Growth' },
-      { label: 'Outcome', value: '1,000 users · Improved day-1 retention' },
+      { label: 'Role', value: 'Head of Product (Embedded)' },
+      { label: 'Company', value: 'Innkorp · 2026–Present' },
+      { label: 'Focus Areas', value: 'API Product · KYB & Consent · Developer Experience · Partnerships' },
+      { label: 'Outcome', value: 'Partner API live · PiggyVest integration · Merchant-bank pipeline' },
     ],
-    tabs: ['01 · Context', '02 · MVP Scope', '03 · Customer Journey', '04 · GTM Strategy', '05 · Growth', '06 · Outcomes'],
+    tabs: ['01 · Context', '02 · Problem Framing', '03 · Product Design', '04 · Partner API', '05 · Distribution', '06 · Outcomes'],
     steps: [
-      { number: 'Step 01 — Context', heading: 'A logistics idea with no product definition and no budget.', body: [{ type: 'paragraph', html: 'iSendApp came to me with a concept: a platform to simplify package sending and logistics management for small businesses and individuals in Nigeria. The idea was sound. But the founding team had no product background, a limited budget, and an instinct to build everything at once.' }, { type: 'callout', text: 'The most important early work wasn\'t building anything. It was deciding what not to build.' }], nav: { nextLabel: 'Next: MVP Scope →', nextStep: 1 } },
-      { number: 'Step 02 — MVP Scope', heading: 'One job. One user type. Ship it.', body: [{ type: 'paragraph', html: 'I facilitated a scope-down exercise with the founding team, cutting the initial feature list from 34 items to 8. The MVP would do exactly one thing well: allow a sender to book a courier pickup, track the delivery, and confirm receipt — entirely through the app.' }, { type: 'insightList', items: [{ text: 'Removed B2B fleet management features (too complex, different user type) from the MVP.' }, { text: 'Removed payment splitting, multi-address books, and scheduled recurring deliveries — all deferred to v2.' }, { text: 'Kept the tracking feature even though it required third-party integration, because it was the number-one reason early users said they would trust a new logistics platform.' }] }], nav: { prevLabel: '← Context', prevStep: 0, nextLabel: 'Next: Customer Journey →', nextStep: 2 } },
-      { number: 'Step 03 — Customer Journey', heading: 'Mapped from first impression to the third delivery.', body: [{ type: 'paragraph', html: 'I built a customer journey map covering five stages: awareness, first booking, first delivery completion, second booking (the retention signal), and referral. Each stage had a drop-off hypothesis and a specific intervention designed into the product.' }, { type: 'callout', text: 'The insight that shaped the most product decisions: users who completed their first delivery and saw real-time tracking were 3× more likely to book again within 7 days. Everything in the MVP was optimised around that first tracking experience.' }], nav: { prevLabel: '← MVP Scope', prevStep: 1, nextLabel: 'Next: GTM Strategy →', nextStep: 3 } },
-      { number: 'Step 04 — GTM Strategy', heading: 'No budget. So we made the product the distribution channel.', body: [{ type: 'paragraph', html: 'With no marketing budget, the GTM strategy had to be product-led. I co-designed a referral mechanic built into the delivery confirmation flow — senders could share a branded delivery link that recipients could use to send their own packages, with a first-delivery discount.' }, { type: 'insightList', items: [{ strong: 'Community seeding:', text: 'First 50 users were recruited from Lagos small business WhatsApp groups, given white-glove onboarding, and asked for feedback directly.' }, { strong: 'Courier as evangelist:', text: 'Courier partners were trained to explain the app to senders at the point of pickup — making every delivery a sales touchpoint.' }, { strong: 'B2B micro-targeting:', text: 'Identified 10 small e-commerce businesses and offered them preferential rates for using iSendApp exclusively for 30 days. Their volume and social proof seeded the platform.' }] }], nav: { prevLabel: '← Customer Journey', prevStep: 2, nextLabel: 'Next: Growth →', nextStep: 4 } },
-      { number: 'Step 05 — Growth', heading: 'Compounding from the first 100 to the first 1,000.', body: [{ type: 'paragraph', html: 'Growth from 100 to 1,000 users came from three sources: organic referrals (the delivery link mechanic), word of mouth from the 10 B2B seed partners, and an Instagram-led awareness push that cost under ₦50,000 and drove 300+ signups in two weeks.' }, { type: 'callout', text: 'The most valuable growth insight: the B2B seed partners drove 4× more signups per partner than any paid channel. Their endorsement carried social proof that ads couldn\'t buy.' }], nav: { prevLabel: '← GTM Strategy', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
-      { number: 'Step 06 — Outcomes', heading: '1,000 users. Better retention. A model that compounded.', body: [{ type: 'outcomeGrid', items: [{ stat: '1,000', label: 'Users reached without a paid marketing budget' }, { stat: '3×', label: 'Repeat booking rate for users who experienced real-time tracking' }, { stat: '8', label: 'MVP features shipped (down from 34 in the original scope)' }, { stat: '₦50K', label: 'Total paid marketing spend for the first 1,000 users' }] }, { type: 'paragraph', html: "The lesson iSendApp demonstrated: in consumer logistics, trust is the product. Every feature decision, every GTM tactic, and every growth mechanic was ultimately about making the sender trust that their package would arrive — and that iSendApp was the most reliable way to make that happen." }], nav: { prevLabel: '← Growth', prevStep: 4, backToWork: true } },
+      { number: 'Step 01 — Context', heading: 'Every African business proves itself from scratch, every single time.', body: [{ type: 'paragraph', html: 'A Nigerian business that wants a corporate bank account, a payment gateway and a lending product uploads the same certificate of incorporation, tax identification number, director details and proof of address three separate times. Each institution re-verifies the same documents independently, and the business waits each time.' }, { type: 'callout', text: 'The documents are not the problem. The absence of a reusable, consented record of verification is the problem.' }], nav: { nextLabel: 'Next: Problem Framing →', nextStep: 1 } },
+      { number: 'Step 02 — Problem Framing', heading: 'Not a document store. A consent layer.', body: [{ type: 'paragraph', html: 'The obvious build is a document locker. I argued against it: a locker moves the storage problem without touching the trust problem. What banks and fintechs actually need is a verified record they can request, and what businesses need is control over who sees what, and for how long.' }, { type: 'callout', text: 'How might a business register once, hold its own verified records, and grant a bank or fintech itemised access it can review and revoke — without re-uploading anything?' }], nav: { prevLabel: '← Context', prevStep: 0, nextLabel: 'Next: Product Design →', nextStep: 2 } },
+      { number: 'Step 03 — Product Design', heading: 'Registration and vault as one journey, not two products.', body: [{ type: 'paragraph', html: 'Innkorp registers the business with the Corporate Affairs Commission — business names, private limited companies and incorporated trustees — and the artefacts of that registration land directly in the vault. The verification record is a by-product of a job the customer already wanted done, which is why the vault fills up at all.' }, { type: 'insightList', items: [{ strong: 'Business-owned vault:', text: 'Certificate of incorporation, tax identification number, director details and proof of address, held against the business rather than against any one institution.' }, { strong: 'Itemised consent:', text: 'A partner requests specific items, not blanket access. The business reviews each request and can revoke it later.' }, { strong: 'Short-lived access:', text: 'Signed links expire, so a granted permission does not quietly become permanent.' }] }], nav: { prevLabel: '← Problem Framing', prevStep: 1, nextLabel: 'Next: Partner API →', nextStep: 3 } },
+      { number: 'Step 04 — Partner API', heading: 'The integration has to feel like Stripe, not like a data request.', body: [{ type: 'paragraph', html: 'I own the partner-facing surface end to end. The test I hold it to: a partner engineer should be able to integrate from the documentation alone, without a call.' }, { type: 'insightList', items: [{ strong: 'Handoff contract:', text: 'A versioned contract defining exactly what a partner sends, what it receives, and what every verification state means.' }, { strong: 'Payload encryption and audit:', text: 'Partner payloads encrypted, with request logging that makes every access attributable after the fact.' }, { strong: 'Webhook delivery guarantees:', text: 'Delivery attempts tracked and retried, so a partner never silently misses a verification result.' }, { strong: 'Embeddable widget:', text: 'A drop-in Verify with Innkorp component for partners who want the flow without building it.' }] }], nav: { prevLabel: '← Product Design', prevStep: 2, nextLabel: 'Next: Distribution →', nextStep: 4 } },
+      { number: 'Step 05 — Distribution', heading: 'Verified business identity is worth most where onboarding hurts most.', body: [{ type: 'paragraph', html: 'The platforms that feel this pain hardest are the ones onboarding businesses at volume. I drove the integration and commercial packaging with fintech platforms including PiggyVest — from first proposal through a signed service-level agreement and a working demo runbook — and took the platform to merchant banking partners.' }, { type: 'callout', text: 'Pricing mattered as much as the API. Verification only gets adopted at volume if the per-request cost sits below the manual review it replaces.' }], nav: { prevLabel: '← Partner API', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
+      { number: 'Step 06 — Outcomes', heading: 'A live partner API and a reusable business identity.', body: [{ type: 'outcomeGrid', items: [{ stat: 'API', label: 'Versioned partner API live, with encryption, webhooks and request logging' }, { stat: 'SLA', label: 'PiggyVest taken from proposal to signed service-level agreement' }, { stat: '3', label: 'Registration types supported: business name, limited company, incorporated trustees' }, { stat: '0', label: 'Re-uploads required once a business holds its own verified vault' }] }, { type: 'paragraph', html: 'The strategic bet is that business identity becomes infrastructure. Registration is the wedge that earns the data, the consent layer is what makes it reusable, and the API is what makes it valuable to everyone else.' }], nav: { prevLabel: '← Distribution', prevStep: 4, backToWork: true } },
     ],
   },
   {
     slug: 'bban',
-    tag: 'Fintech · Fraud Prevention · Central Bank · Inlaks Limited',
-    title: "A $250K contract won by solving a problem nobody had named yet.",
-    summary: "Identified a critical gap in CPay's payment validation layer and led the design of a BBAN Validator and Account Mapper feature — securing a $250,000 contract with the Central Bank of Liberia.",
+    tag: 'Payment Infrastructure · Central Bank · API Product · Inlaks Limited',
+    title: "The account-validation layer a central bank now runs on.",
+    summary: "Account Mapper is the national account-validation and BBAN layer adopted by the Central Bank of Liberia under the World Bank-funded LIFT-P programme. I owned the API product — Ingress and Name Enquiry contracts, versioning, acceptance testing — and drove integration across nine commercial banks, with the architecture reviewed against digital public infrastructure standards.",
     meta: [
       { label: 'Role', value: 'Senior Product Manager' },
       { label: 'Client', value: 'Central Bank of Liberia' },
-      { label: 'Focus Areas', value: 'Fraud Prevention · Payment Validation · Contract Win' },
-      { label: 'Outcome', value: '$250K contract secured' },
+      { label: 'Focus Areas', value: 'API Product · Payment Validation · Bank Integration · DPI Architecture' },
+      { label: 'Outcome', value: '9 banks integrated · $400K leakage closed' },
     ],
     tabs: ['01 · Discovery', '02 · Problem Framing', '03 · Solution Design', '04 · Validation', '05 · Contract', '06 · Outcomes'],
     steps: [
@@ -780,8 +813,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       { number: 'Step 02 — Problem Framing', heading: 'Not a user error problem. A missing validation layer.', body: [{ type: 'paragraph', html: "The instinct in the team was to frame this as a training problem — staff needed to be more careful when entering account numbers. I challenged that framing. In a high-volume payment environment, human error rates don't improve through training; they improve through system design." }, { type: 'callout', text: "How might we make it structurally impossible to submit a payment to an invalid or unresolvable account — without adding friction to the payment flow for valid transactions?" }], nav: { prevLabel: '← Discovery', prevStep: 0, nextLabel: 'Next: Solution Design →', nextStep: 2 } },
       { number: 'Step 03 — Solution Design', heading: 'A validation layer that mapped BBANs to verified account identities.', body: [{ type: 'paragraph', html: "I designed a BBAN Validator and Account Mapper feature that sat between entry and submission in the payment flow. When a user entered an account number, the system would validate the BBAN format against the Central Bank's account structure rules, then resolve it to a verified account holder name for human confirmation before submission." }, { type: 'insightList', items: [{ strong: 'Real-time BBAN format validation:', text: 'Checked structure and check digits against CBL account number rules, flagging malformed entries instantly.' }, { strong: 'Account name resolution:', text: 'Resolved valid BBANs to verified account holder names via CBL API integration — allowing payment officers to visually confirm the recipient before submission.' }, { strong: 'Audit trail generation:', text: 'Every validation event logged with timestamp, operator ID, and resolution result — creating a full fraud-audit trail for compliance purposes.' }] }], nav: { prevLabel: '← Problem Framing', prevStep: 1, nextLabel: 'Next: Validation →', nextStep: 3 } },
       { number: 'Step 04 — Validation', heading: 'Tested against real failure data before a line of code was written.', body: [{ type: 'paragraph', html: "Before engineering began, I ran the proposed validation logic against the three months of historical failure data. 94% of the previously-failed transactions would have been caught and corrected by the validator before submission." }, { type: 'callout', text: "The validation test also revealed something unexpected: 12% of the 'failed payment' logs were not user errors — they were attempted fraud. The account name resolution step would have caught these too, because the resolved name didn't match what the submitter claimed." }], nav: { prevLabel: '← Solution Design', prevStep: 2, nextLabel: 'Next: Contract →', nextStep: 4 } },
-      { number: 'Step 05 — Contract', heading: "A $250K contract the Central Bank initiated — we didn't pitch it.", body: [{ type: 'paragraph', html: "I presented the BBAN validator findings and design to the CPay programme team. The product director shared the analysis with Central Bank of Liberia stakeholders during a quarterly review. Within three weeks, the CBL had initiated a $250,000 contract to implement the feature as a mandatory validation layer across all government payment flows." }, { type: 'callout', text: "The contract came because we had quantified the problem before proposing the solution. The CBL's response wasn't 'interesting idea' — it was 'we've been looking for someone to solve this for two years.'" }], nav: { prevLabel: '← Validation', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
-      { number: 'Step 06 — Outcomes', heading: '$250K. Zero misdirected payments. A fraud prevention capability.', body: [{ type: 'outcomeGrid', items: [{ stat: '$250K', label: 'Contract value secured with Central Bank of Liberia' }, { stat: '94%', label: 'Of historical failed payments would have been caught by validator' }, { stat: '68%', label: 'Of payment errors attributable to BBAN entry — the root cause nobody had named' }, { stat: '12%', label: 'Of failure logs identified as attempted fraud, not user error' }] }, { type: 'paragraph', html: "The lesson this project crystallised: the most valuable product work is often identifying the problem nobody has named yet. The BBAN validator wasn't on any roadmap. It wasn't requested by any stakeholder. It came from reading support data until a pattern became undeniable — and then quantifying it before anyone asked." }], nav: { prevLabel: '← Contract', prevStep: 4, backToWork: true } },
+      { number: 'Step 05 — Contract', heading: "A central bank mandate we didn't have to pitch.", body: [{ type: 'paragraph', html: "I presented the BBAN validator findings and design to the CPay programme team. The product director shared the analysis with Central Bank of Liberia stakeholders during a quarterly review. Within three weeks, the CBL had initiated a $400,000 contract to implement the feature as a mandatory validation layer across all government payment flows — later formalised under the World Bank-funded LIFT-P programme and rolled out across nine commercial banks." }, { type: 'callout', text: "The contract came because we had quantified the problem before proposing the solution. The CBL's response wasn't 'interesting idea' — it was 'we've been looking for someone to solve this for two years.'" }], nav: { prevLabel: '← Validation', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
+      { number: 'Step 06 — Outcomes', heading: 'Nine banks. A national validation layer. Zero misdirected payments.', body: [{ type: 'outcomeGrid', items: [{ stat: '9', label: 'Commercial banks integrated into the national validation layer' }, { stat: '94%', label: 'Of historical failed payments would have been caught by validator' }, { stat: '68%', label: 'Of payment errors attributable to BBAN entry — the root cause nobody had named' }, { stat: '12%', label: 'Of failure logs identified as attempted fraud, not user error' }] }, { type: 'paragraph', html: "The lesson this project crystallised: the most valuable product work is often identifying the problem nobody has named yet. The BBAN validator wasn't on any roadmap. It wasn't requested by any stakeholder. It came from reading support data until a pattern became undeniable — and then quantifying it before anyone asked." }], nav: { prevLabel: '← Contract', prevStep: 4, backToWork: true } },
     ],
   },
 ];

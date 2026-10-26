@@ -93,12 +93,6 @@ export const CERTS: Record<string, Cert> = {
       },
     ],
   },
-  kellogg: {
-    title: 'Product Strategy — Kellogg (not started)',
-    pending: true,
-    noClick: true,
-    images: [],
-  },
 };
 
 export const CERT_BADGES = [
@@ -107,5 +101,4 @@ export const CERT_BADGES = [
   { key: 'ux',      label: 'UX Design — Accenture',          pending: false, noClick: false },
   { key: 'ibm',     label: 'Enterprise Design Thinking — IBM', pending: false, noClick: false },
   { key: 'fmva',    label: 'FMVA — CFI',                     pending: true,  noClick: false, inProgressLabel: 'in progress' },
-  { key: 'kellogg', label: 'Product Strategy — Kellogg',     pending: true,  noClick: true,  inProgressLabel: 'not started' },
 ];
