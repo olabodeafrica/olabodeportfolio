@@ -64,11 +64,21 @@ export interface CaseStudyMeta {
   value: string;
 }
 
+export interface CaseStudyCompany {
+  /** Display name, used as the wordmark when no logo file is supplied. */
+  name: string;
+  /** Company website. The logo / wordmark links out to this. */
+  website: string;
+  /** Optional logo in /public/assets. Falls back to the wordmark when absent. */
+  logo?: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
   tag: string;
   summary: string;
+  company?: CaseStudyCompany;
   meta: CaseStudyMeta[];
   tabs: string[];
   steps: Step[];
@@ -177,6 +187,16 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     image: { src: '/assets/CPay Brainstorming.jpeg', alt: 'CPay team brainstorming session' },
   },
   {
+    slug: 'porchplus',
+    tag: 'Proptech · Payments · Multi-Market',
+    title: 'Rent collection that stops chasing people.',
+    description:
+      "Led product and transformation for Porchplus, a property management platform for landlords and tenants. I took the MVP from concept to live across web and mobile, then built a multi-channel rent collection system spanning WhatsApp, SMS, email and in-app, and integrated PiggyVest wallet APIs so payments never had to leave the product. Alongside it I standardised the property onboarding and tenant management workflows that had been living in people's heads.",
+    bgColor: '#fdf4e3',
+    visualType: 'chat',
+    layout: 'left',
+  },
+  {
     slug: 'innkorp',
     tag: 'RegTech · KYB · API Platform · 0→1',
     title: 'Register once, verify everywhere — KYB infrastructure for African businesses.',
@@ -191,6 +211,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
 export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: 'omni',
+    company: { name: 'Inlaks Limited', website: 'https://www.inlaks.com/' },
     tag: 'Banking · OMNI Channel · Multi-Market · Inlaks Limited',
     title: 'One banking suite, five countries — retail, corporate, WhatsApp, voice and CRM.',
     summary:
@@ -213,6 +234,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'pierflow',
+    company: { name: 'Pierflow', website: 'https://www.pierflow.com/' },
     tag: 'Healthtech · API Platform · 0→1 · Pierflow',
     title:
       'The connectivity layer for healthcare in Africa — building the API platform hospitals, payers, and patients can plug into.',
@@ -358,6 +380,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'taxspire',
+    company: { name: 'SpireCore', website: 'https://www.taxspire.com/' },
     tag: 'Regtech · Fintech · 0→1 · SpireCore',
     title:
       "From tax filing to full corporate compliance — building Nigeria's first digital-first tax platform.",
@@ -487,6 +510,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'cpay',
+    company: { name: 'Inlaks Limited', website: 'https://www.inlaks.com/' },
     tag: 'Fintech · Government · West Africa · Inlaks Limited',
     title: 'A payment platform that crossed borders — and changed behaviour.',
     summary:
@@ -611,6 +635,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'amis',
+    company: { name: 'Inlaks Limited', website: 'https://www.inlaks.com/' },
     tag: 'Government · SaaS · Financial Oversight · Inlaks Limited',
     title: 'Turning a one-off government tool into a $30M SaaS platform.',
     summary:
@@ -734,6 +759,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'sunu',
+    company: { name: 'Inlaks Limited', website: 'https://www.inlaks.com/' },
     tag: 'Healthtech · Insurance · Africa · SUNU Health',
     title: 'Health insurance that actually works for the people using it.',
     summary: 'Built a health insurance management suite for SUNU Health, serving operations across 17 countries. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction.',
@@ -755,6 +781,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'hmis',
+    company: { name: 'Vatebra Limited', website: 'https://www.vatebra.com/' },
     tag: 'HMIS · Compliance · CI/CD · Vatebra',
     title: 'A health information system shipped 40% faster — without cutting corners.',
     summary: 'Owned the full product lifecycle for a Health Management Information System at Vatebra — from discovery through compliance sign-off and launch. Introduced CI/CD with Jenkins, reducing release turnaround by 40%.',
@@ -775,7 +802,31 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
+    slug: 'porchplus',
+    company: { name: 'Porchplus', website: 'https://porchplus.com/' },
+    tag: 'Proptech · Payments · Multi-Market · Porchplus',
+    title: 'Rent collection that stops chasing people.',
+    summary:
+      "Porchplus is a property management platform for landlords and tenants. I led product and transformation: MVP to live across web and mobile, a multi-channel rent collection system that automated the chasing, PiggyVest wallet integration to keep payments on-platform, and the operational standardisation that made multi-market scale possible.",
+    meta: [
+      { label: 'Role', value: 'Product & Transformation Lead' },
+      { label: 'Company', value: 'Porchplus · 2020–2025' },
+      { label: 'Focus Areas', value: 'Multi-Channel Payments · Ops Standardisation · Agile Delivery' },
+      { label: 'Outcome', value: 'Rent collection automated across four channels' },
+    ],
+    tabs: ['01 · Context', '02 · Problem Framing', '03 · Product', '04 · Payments', '05 · Operations', '06 · Outcomes'],
+    steps: [
+      { number: 'Step 01 — Context', heading: 'Property management run on phone calls and goodwill.', body: [{ type: 'paragraph', html: 'Multi-unit landlords in Lagos were managing tenants, rent and maintenance with a phone, a notebook and a bank app. Rent arrived late not because tenants would not pay, but because nobody had reminded them, and because paying meant leaving whatever app they were in and remembering an account number.' }, { type: 'callout', text: 'The landlord was effectively a debt collector working from memory. Every late payment cost two phone calls and a relationship.' }], nav: { nextLabel: 'Next: Problem Framing →', nextStep: 1 } },
+      { number: 'Step 02 — Problem Framing', heading: 'The product was not a ledger. It was a reminder engine with a payment attached.', body: [{ type: 'paragraph', html: 'The obvious build was a property management dashboard. Discovery pointed elsewhere: landlords did not need better records, they needed rent to arrive without being chased. That reframes the core loop from record-keeping to prompting and collecting.' }, { type: 'callout', text: 'How might rent collect itself, on the channels tenants already use, without the landlord having to ask?' }], nav: { prevLabel: '← Context', prevStep: 0, nextLabel: 'Next: Product →', nextStep: 2 } },
+      { number: 'Step 03 — Product', heading: 'MVP across web and mobile, scoped to the collection loop.', body: [{ type: 'paragraph', html: 'I took the MVP from concept to live across web and mobile, deliberately narrow: onboard a property, onboard its tenants, schedule the rent, prompt for it, collect it, and show the landlord where every unit stood. Maintenance ticketing and listings were cut from v1 so the collection loop could be made genuinely good.' }, { type: 'insightList', items: [{ strong: 'Landlord onboarding:', text: 'Multi-unit properties modelled properly from the start, because a landlord with twelve flats behaves nothing like one with a single tenant.' }, { strong: 'Tenant onboarding:', text: 'Invite flows designed for people who would not download an app, which is why the channels mattered more than the interface.' }, { strong: 'Unit-level visibility:', text: 'One view showing which units were paid, late or lapsed, so the landlord stopped working from memory.' }] }], nav: { prevLabel: '← Problem Framing', prevStep: 1, nextLabel: 'Next: Payments →', nextStep: 3 } },
+      { number: 'Step 04 — Payments', heading: 'Four channels, because tenants do not all live in one.', body: [{ type: 'paragraph', html: 'I designed a multi-channel rent collection system that automated reminders and payment flows across WhatsApp, SMS, email and in-app. The channel mix was not a feature list, it was a reach decision: the tenant who ignores email answers WhatsApp, and the one without data gets an SMS.' }, { type: 'insightList', items: [{ strong: 'Automated reminder cadence:', text: 'Scheduled prompts ahead of the due date and after it, so the landlord never had to make the first call.' }, { strong: 'PiggyVest wallet integration:', text: 'Wallet APIs integrated so a tenant could pay from a balance they already held, keeping the payment inside the product instead of sending them to a banking app.' }, { strong: 'Reconciliation back to the unit:', text: 'Every payment resolved to a specific unit and period, which is what made the landlord dashboard trustworthy.' }] }, { type: 'callout', text: 'Reducing manual follow-up was the whole point. Every reminder the system sent was a conversation the landlord did not have to start.' }], nav: { prevLabel: '← Product', prevStep: 2, nextLabel: 'Next: Operations →', nextStep: 4 } },
+      { number: 'Step 05 — Operations', heading: 'Writing down the workflows that lived in people\u2019s heads.', body: [{ type: 'paragraph', html: 'Scaling beyond Lagos was blocked by something unglamorous: nobody had documented how the business actually ran. Property onboarding, tenant management and service delivery were all tribal knowledge. I standardised and documented each one, then ran Agile delivery against them: sprint planning, backlog grooming and iteration reviews across payments, tenant services and operations.' }, { type: 'callout', text: 'The delivery cadence gave the team a predictability it had not had before. That mattered more than any single feature shipped in it.' }], nav: { prevLabel: '← Payments', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 } },
+      { number: 'Step 06 — Outcomes', heading: 'Rent that arrives, and a business that can be repeated.', body: [{ type: 'outcomeGrid', items: [{ stat: '4', label: 'Collection channels automated: WhatsApp, SMS, email, in-app' }, { stat: 'MVP', label: 'Concept to live across web and mobile, scoped to the collection loop' }, { stat: 'Wallet', label: 'PiggyVest integration keeping payments inside the product' }, { stat: 'Ops', label: 'Onboarding, tenant management and service workflows documented for multi-market scale' }] }, { type: 'paragraph', html: 'The lesson that carried forward: in a market where the incumbent process is a phone call, the product does not win on features. It wins by removing the conversation nobody wanted to have.' }], nav: { prevLabel: '← Operations', prevStep: 4, backToWork: true } },
+    ],
+  },
+  {
     slug: 'innkorp',
+    company: { name: 'Innkorp', website: 'https://innkorp.com' },
     tag: 'RegTech · KYB · API Platform · Innkorp',
     title: 'Register once, verify everywhere — KYB infrastructure for African businesses.',
     summary:
@@ -798,6 +849,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     slug: 'bban',
+    company: { name: 'Inlaks Limited', website: 'https://www.inlaks.com/' },
     tag: 'Payment Infrastructure · Central Bank · API Product · Inlaks Limited',
     title: "The account-validation layer a central bank now runs on.",
     summary: "Account Mapper is the national account-validation and BBAN layer adopted by the Central Bank of Liberia under the World Bank-funded LIFT-P programme. I owned the API product — Ingress and Name Enquiry contracts, versioning, acceptance testing — and drove integration across nine commercial banks, with the architecture reviewed against digital public infrastructure standards.",

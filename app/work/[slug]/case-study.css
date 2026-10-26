@@ -79,6 +79,62 @@
   color: var(--black);
 }
 
+/* COMPANY — logo/wordmark linking out to the company website.
+   Entry point for CV readers: CV → case study → company site. */
+.cs-company {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.cs-company__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-bottom: 0.75rem;
+}
+.cs-company__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 1.15rem;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.cs-company__link:hover {
+  border-color: var(--black);
+  transform: translateY(-1px);
+}
+.cs-company__logo {
+  display: block;
+  height: 30px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+}
+.cs-company__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+.cs-company__cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--grey-mid);
+}
+.cs-company__link:hover .cs-company__cta { color: var(--black); }
+
+@media (max-width: 560px) {
+  .cs-company__link { width: 100%; justify-content: space-between; }
+}
+
 /* STEPS TAB BAR */
 .cs-steps-bar {
   position: sticky;

@@ -40,13 +40,37 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
           ))}
         </div>
+
+        {study.company && (
+          <div className="cs-company">
+            <p className="cs-company__label">Built at</p>
+            <a
+              href={study.company.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cs-company__link"
+              aria-label={`Visit the ${study.company.name} website`}
+            >
+              {study.company.logo ? (
+                <img
+                  src={study.company.logo}
+                  alt={`${study.company.name} logo`}
+                  className="cs-company__logo"
+                />
+              ) : (
+                <span className="cs-company__wordmark">{study.company.name}</span>
+              )}
+              <span className="cs-company__cta">Visit website &rarr;</span>
+            </a>
+          </div>
+        )}
       </header>
 
       <CaseStudyTabs study={study} />
 
       <footer className="cs-footer">
         <p>Want to discuss this work or explore collaborating?</p>
-        <a href="mailto:olabode.ogunfuye@gmail.com">Get in touch &rarr;</a>
+        <a href="mailto:olabode.africa@gmail.com">Get in touch &rarr;</a>
       </footer>
     </>
   );

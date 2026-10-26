@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           <div>
             <h5>Contact</h5>
-            <a href="mailto:olabode.ogunfuye@gmail.com">Email</a>
+            <a href="mailto:olabode.africa@gmail.com">Email</a>
             <a href="tel:+2348100694808">+234 810 069 4808</a>
             <a href="#">Book a call</a>
           </div>
