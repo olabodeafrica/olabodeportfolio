@@ -6,7 +6,9 @@ import { createClient } from '@/lib/supabase/server';
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
-  const next = url.searchParams.get('next') ?? '/admin';
+  // Only allow same-site paths, so the link can't bounce users to another website.
+  const rawNext = url.searchParams.get('next') ?? '/admin';
+  const next = rawNext.startsWith('/') && !rawNext.startsWith('//') && !rawNext.startsWith('/\\') ? rawNext : '/admin';
 
   if (code) {
     const supabase = await createClient();
