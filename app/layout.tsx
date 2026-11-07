@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Inter, Playfair_Display, Source_Serif_4 } from 'next/font/google';
 import { PERSON, SITE, alternates } from '@/lib/site';
 import Clarity from '@/components/Clarity';
@@ -73,6 +73,14 @@ export const metadata: Metadata = {
     ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
     ...(process.env.BING_SITE_VERIFICATION ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } } : {}),
   },
+};
+
+// Browser UI colour (mobile address bar), matched to the light/dark page background.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#faf9f5' },
+    { media: '(prefers-color-scheme: dark)', color: '#141413' },
+  ],
 };
 
 // Apply the stored theme before first paint so there is no light/dark flash.
