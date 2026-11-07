@@ -1037,3 +1037,8 @@ textarea.form-input { resize: vertical; min-height: 72px; }
 }
 .cm-reply textarea:focus { outline: none; border-color: var(--a-ink); }
 .cm-reply__actions { display: flex; justify-content: flex-end; gap: .4rem; margin-top: .5rem; }
+
+/* 8 tabs: scroll sideways on narrow phones instead of squashing labels */
+.admin-bottom-nav__inner { overflow-x: auto; scrollbar-width: none; }
+.admin-bottom-nav__inner::-webkit-scrollbar { display: none; }
+.admin-bottom-tab { min-width: 64px; flex-shrink: 0; }

@@ -2,17 +2,26 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { formatPostDate, getAllPosts } from '@/lib/posts';
+import JsonLd from '@/components/JsonLd';
+import Subscribe from '@/components/blog/Subscribe';
+import UnsubscribedNotice from '@/components/blog/UnsubscribedNotice';
+import { formatPostDate, getAllPosts, getAllTags } from '@/lib/posts';
+import { PERSON_ID } from '@/lib/schema';
+import { SITE, abs, alternates } from '@/lib/site';
 import './blog.css';
 
 export const metadata: Metadata = {
-  title: 'Writing — Olabode Ogunfuye',
-  description: 'Product reviews and notes on African tech, payments and consumer products.',
-  alternates: { canonical: 'https://www.olabode.africa/blog' },
+  title: 'Writing',
+  description: SITE.blogDescription,
+  alternates: alternates('/blog'),
+  openGraph: { url: '/blog', title: SITE.blogTitle, description: SITE.blogDescription },
+  twitter: { title: SITE.blogTitle, description: SITE.blogDescription },
 };
 
 export default function BlogIndex() {
-  const [featured, ...rest] = getAllPosts();
+  const posts = getAllPosts();
+  const [featured, ...rest] = posts;
+  const tags = getAllTags();
 
   return (
     <>
@@ -26,6 +35,18 @@ export default function BlogIndex() {
             products across African markets.
           </p>
         </header>
+
+        <UnsubscribedNotice />
+
+        {tags.length > 0 && (
+          <nav className="tag-cloud tag-cloud--top" aria-label="Topics">
+            <ul>
+              {tags.map(t => (
+                <li key={t.slug}><Link href={`/blog/tag/${t.slug}`}>{t.tag} <span>{t.count}</span></Link></li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {!featured && <p className="blog-empty">No posts yet.</p>}
 
@@ -63,8 +84,30 @@ export default function BlogIndex() {
             ))}
           </section>
         )}
+
+        <Subscribe source="blog" />
       </main>
       <Footer />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          '@id': `${SITE.url}/blog#blog`,
+          url: abs('/blog'),
+          name: SITE.blogTitle,
+          description: SITE.blogDescription,
+          inLanguage: SITE.language,
+          author: { '@id': PERSON_ID },
+          publisher: { '@id': PERSON_ID },
+          blogPost: posts.map(p => ({
+            '@type': 'BlogPosting',
+            headline: p.title,
+            url: abs(`/blog/${p.slug}`),
+            datePublished: p.date,
+            dateModified: p.updated ?? p.date,
+          })),
+        }}
+      />
     </>
   );
 }

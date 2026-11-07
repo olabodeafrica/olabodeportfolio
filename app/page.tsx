@@ -1,10 +1,16 @@
+import type { Metadata } from 'next';
 import Nav from '@/components/Nav';
+import JsonLd from '@/components/JsonLd';
+import { homeGraph } from '@/lib/schema';
+import { alternates } from '@/lib/site';
 import CertModal from '@/components/CertModal';
 import CVModal from '@/components/CVModal';
 import CaseStudies from '@/components/CaseStudies';
 import LatestWriting from '@/components/LatestWriting';
 import Footer from '@/components/Footer';
 import ScrollEffects from '@/components/ScrollEffects';
+
+export const metadata: Metadata = { alternates: alternates('/') };
 
 export default function Home() {
   return (
@@ -113,6 +119,7 @@ export default function Home() {
 
       <Footer />
       <ScrollEffects />
+      <JsonLd data={homeGraph()} />
     </>
   );
 }

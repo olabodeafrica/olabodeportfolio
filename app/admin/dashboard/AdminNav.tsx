@@ -12,6 +12,7 @@ const navItems = [
   { href: '/admin/dashboard/integrations', label: 'Integrations', icon: '🔌' },
   { href: '/admin/dashboard/reports', label: 'Reports', icon: '📊' },
   { href: '/admin/dashboard/comments', label: 'Comments', icon: '💬' },
+  { href: '/admin/dashboard/subscribers', label: 'Subscribers', icon: '✉️' },
 ];
 
 type Badges = Record<string, number>;

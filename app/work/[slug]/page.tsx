@@ -3,6 +3,9 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { CASE_STUDIES } from '@/data/caseStudies';
 import CaseStudyTabs from '@/components/CaseStudyTabs';
+import JsonLd from '@/components/JsonLd';
+import { caseStudyGraph } from '@/lib/schema';
+import { alternates } from '@/lib/site';
 import './case-study.css';
 
 export function generateStaticParams() {
@@ -13,7 +16,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const study = CASE_STUDIES.find(cs => cs.slug === slug);
   if (!study) return {};
-  return { title: `${study.title} — Olabode Ogunfuye` };
+  const path = `/work/${slug}`;
+  return {
+    title: study.title,
+    description: study.summary,
+    alternates: alternates(path),
+    openGraph: { type: 'article', url: path, title: study.title, description: study.summary },
+    twitter: { title: study.title, description: study.summary },
+  };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -67,6 +77,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       </header>
 
       <CaseStudyTabs study={study} />
+
+      <JsonLd data={caseStudyGraph(study)} />
 
       <footer className="cs-footer">
         <p>Want to discuss this work or explore collaborating?</p>

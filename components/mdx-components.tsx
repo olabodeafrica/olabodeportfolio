@@ -20,6 +20,17 @@ function Figure({ src = '', alt = '' }: { src?: string; alt?: string }) {
   );
 }
 
+// Headings get stable ids plus a hover "#" link, so any section can be shared or cited directly.
+function Heading({ as: Tag, children }: { as: 'h2' | 'h3'; children?: ReactNode }) {
+  const id = slugifyHeading(textOf(children));
+  return (
+    <Tag id={id}>
+      {children}
+      <a className="heading-anchor" href={`#${id}`} aria-label="Link to this section">#</a>
+    </Tag>
+  );
+}
+
 // MDX creates <img> elements with this component as their type, so <p> can detect a lone image.
 const Img: MDXComponents['img'] = props => <Figure src={props.src as string} alt={props.alt} />;
 
@@ -31,7 +42,8 @@ export const mdxComponents: MDXComponents = {
     if (kids.length === 1 && isValidElement(kids[0]) && kids[0].type === Img) return <>{kids}</>;
     return <p>{children}</p>;
   },
-  h2: ({ children }) => <h2 id={slugifyHeading(textOf(children))}>{children}</h2>,
+  h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+  h3: ({ children }) => <Heading as="h3">{children}</Heading>,
   table: props => (
     <div className="post-table">
       <table {...props} />

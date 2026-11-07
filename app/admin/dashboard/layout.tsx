@@ -4,6 +4,8 @@ import { commentsConfigured, commentsDb } from '@/lib/comments';
 import { COMMENTS_SEEN_COOKIE } from '@/lib/comments-shared';
 import { createClient } from '@/lib/supabase/server';
 import AdminNav from './AdminNav';
+
+export const metadata = { robots: { index: false, follow: false } };
 import './admin.css';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {

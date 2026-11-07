@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Inter, Playfair_Display, Source_Serif_4 } from 'next/font/google';
+import { PERSON, SITE, alternates } from '@/lib/site';
 import './globals.css';
 
 // Public site: editorial serif for display + long-form copy, geometric sans for UI.
@@ -34,17 +35,42 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.olabode.africa'),
-  title: 'Olabode Ogunfuye — Product Leader · Banking, Payments & Agentic AI',
-  description:
-    '12 years building banking, payments, and government technology across six African markets. OMNI Channel banking, payment rails, KYB infrastructure, and agentic AI workflows.',
+  metadataBase: new URL(SITE.url),
+  title: { default: SITE.title, template: `%s — ${SITE.name}` },
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: PERSON.name, url: SITE.url }],
+  creator: PERSON.name,
+  publisher: PERSON.name,
+  keywords: [...PERSON.knowsAbout],
+  // RSS autodiscovery only; each public page sets its own canonical via alternates(path).
+  alternates: { types: alternates('/').types },
+  formatDetection: { telephone: false, email: false, address: false },
+  robots: {
+    index: true,
+    follow: true,
+    // Let Google show large image previews and full-length snippets (Discover, AI Overviews).
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+  },
   openGraph: {
-    title: 'Olabode Ogunfuye — Product Leader · Banking, Payments & Agentic AI',
-    description:
-      '12 years building banking, payments, and government technology across six African markets.',
-    url: 'https://www.olabode.africa',
-    siteName: 'Olabode Ogunfuye',
     type: 'website',
+    siteName: SITE.name,
+    locale: SITE.locale,
+    url: SITE.url,
+    title: SITE.title,
+    description: SITE.description,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: SITE.twitter,
+    creator: SITE.twitter,
+    title: SITE.title,
+    description: SITE.description,
+  },
+  // Set these in Vercel to verify ownership in Google Search Console / Bing Webmaster Tools.
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
+    ...(process.env.BING_SITE_VERIFICATION ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } } : {}),
   },
 };
 
@@ -54,7 +80,7 @@ const themeScript = `try{var t=localStorage.getItem('theme');document.documentEl
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${serif.variable} ${sans.variable} ${inter.variable} ${playfair.variable}`}
       data-theme="light"
       suppressHydrationWarning

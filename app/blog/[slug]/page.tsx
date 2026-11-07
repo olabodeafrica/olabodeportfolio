@@ -5,15 +5,20 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
 import { mdxComponents } from '@/components/mdx-components';
 import PostToc from '@/components/PostToc';
 import ShareBar from '@/components/blog/ShareBar';
 import QuoteShare from '@/components/blog/QuoteShare';
 import Comments from '@/components/blog/Comments';
-import { formatPostDate, getAllPosts, getPost, getPostSlugs, getToc } from '@/lib/posts';
+import AuthorBox from '@/components/blog/AuthorBox';
+import Subscribe from '@/components/blog/Subscribe';
+import {
+  countWords, formatPostDate, getPost, getPostSlugs, getRelatedPosts, getToc, slugifyHeading, tagSlug,
+} from '@/lib/posts';
+import { postGraph } from '@/lib/schema';
+import { SITE, abs, alternates } from '@/lib/site';
 import '../blog.css';
-
-const SITE = 'https://www.olabode.africa';
 
 export const dynamicParams = false;
 
@@ -25,31 +30,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  const url = `${SITE}/blog/${slug}`;
-  const images = post.cover ? [`${SITE}${post.cover}`] : undefined;
+  const path = `/blog/${slug}`;
+  // The share image comes from ./opengraph-image.tsx (a branded title card).
   return {
-    title: `${post.title} — Olabode Ogunfuye`,
+    title: post.title,
     description: post.description,
-    alternates: { canonical: url },
+    keywords: [...post.tags, ...post.keywords],
+    authors: [{ name: post.author, url: SITE.url }],
+    alternates: alternates(path),
     openGraph: {
       type: 'article',
-      url,
+      url: path,
       title: post.title,
       description: post.description,
       publishedTime: post.date,
-      authors: [post.author],
+      modifiedTime: post.updated ?? post.date,
+      authors: [SITE.url],
+      section: post.tags[0],
       tags: post.tags,
-      siteName: 'Olabode Ogunfuye',
-      images,
     },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@olabode_africa',
-      creator: '@olabode_africa',
-      title: post.title,
-      description: post.description,
-      images,
-    },
+    twitter: { title: post.title, description: post.description },
   };
 }
 
@@ -58,45 +58,52 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
 
-  const toc = getToc(post.content);
-  const url = `${SITE}/blog/${slug}`;
-  const more = getAllPosts().filter(p => p.slug !== slug).slice(0, 3);
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    author: { '@type': 'Person', name: post.author, url: SITE },
-    image: post.cover ? `${SITE}${post.cover}` : undefined,
-    mainEntityOfPage: url,
-  };
+  const toc = [...getToc(post.content), ...(post.faq.length ? [{ id: 'faq', text: 'FAQ' }] : [])];
+  const url = abs(`/blog/${slug}`);
+  const related = getRelatedPosts(post, 3);
+  const updated = post.updated && post.updated !== post.date ? post.updated : undefined;
 
   return (
     <>
       <Nav />
       <main className="post">
         <header className="post-head container">
-          <Link href="/blog" className="post-back">&larr; Writing</Link>
+          <nav className="post-crumbs" aria-label="Breadcrumb">
+            <ol>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/blog">Writing</Link></li>
+              {post.tags[0] && (
+                <li><Link href={`/blog/tag/${tagSlug(post.tags[0])}`}>{post.tags[0]}</Link></li>
+              )}
+            </ol>
+          </nav>
           <p className="post-kicker">
             <span>{post.tags[0] ?? 'Writing'}</span>
             <span aria-hidden="true">·</span>
             <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+            {updated && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span className="post-kicker__updated">
+                  Updated <time dateTime={updated}>{formatPostDate(updated)}</time>
+                </span>
+              </>
+            )}
           </p>
           <h1 className="post-title">{post.title}</h1>
           <p className="post-standfirst">{post.description}</p>
           <div className="post-byline">
-            <span className="post-byline__name">{post.author}</span>
+            <Link href="/#about" className="post-byline__name" rel="author">{post.author}</Link>
             <span className="post-byline__meta">{post.readingTime}</span>
           </div>
-          <ShareBar url={url} title={post.title} via="olabode_africa" showComments />
+          <ShareBar url={url} title={post.title} via={SITE.twitter.slice(1)} showComments />
         </header>
 
         {post.cover && (
           <div className="post-cover container">
+            {/* The cover is the LCP element: load it eagerly at high priority. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.cover} alt="" />
+            <img src={post.cover} alt="" width={894} height={521} fetchPriority="high" decoding="async" />
           </div>
         )}
 
@@ -104,35 +111,62 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {toc.length > 1 && <PostToc items={toc} />}
 
           <div className="post-main">
-          <article className="prose">
-            <MDXRemote
-              source={post.content}
-              components={mdxComponents}
-              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-            />
+            <article className="prose">
+              {post.takeaways.length > 0 && (
+                <aside className="post-takeaways" aria-labelledby="takeaways-title">
+                  <p id="takeaways-title" className="post-takeaways__title">Key takeaways</p>
+                  <ul>
+                    {post.takeaways.map((t, i) => <li key={i}>{t}</li>)}
+                  </ul>
+                </aside>
+              )}
 
-            {post.tags.length > 0 && (
-              <ul className="post-tags" aria-label="Tags">
-                {post.tags.map(t => <li key={t}>{t}</li>)}
-              </ul>
-            )}
+              <MDXRemote
+                source={post.content}
+                components={mdxComponents}
+                options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              />
 
-            <div className="post-share-end">
-              <p className="post-share-end__text">Found this useful? Share it with someone who&apos;d enjoy it.</p>
-              <ShareBar url={url} title={post.title} via="olabode_africa" />
-            </div>
-          </article>
+              {post.faq.length > 0 && (
+                <section className="post-faq" aria-labelledby="faq">
+                  <h2 id="faq">Frequently asked questions</h2>
+                  {post.faq.map(f => (
+                    <details key={f.q} id={`faq-${slugifyHeading(f.q)}`} className="post-faq__item">
+                      <summary>{f.q}</summary>
+                      <p>{f.a}</p>
+                    </details>
+                  ))}
+                </section>
+              )}
 
-          <Comments slug={slug} prompt={post.discussionPrompt} />
+              {post.tags.length > 0 && (
+                <ul className="post-tags" aria-label="Topics">
+                  {post.tags.map(t => (
+                    <li key={t}><Link href={`/blog/tag/${tagSlug(t)}`}>{t}</Link></li>
+                  ))}
+                </ul>
+              )}
+
+              <AuthorBox />
+
+              <div className="post-share-end">
+                <p className="post-share-end__text">Found this useful? Share it with someone who&apos;d enjoy it.</p>
+                <ShareBar url={url} title={post.title} via={SITE.twitter.slice(1)} />
+              </div>
+            </article>
+
+            <Subscribe source={`post:${slug}`} />
+
+            <Comments slug={slug} prompt={post.discussionPrompt} />
           </div>
         </div>
-        <QuoteShare url={url} via="olabode_africa" containerSelector=".post-main .prose" />
+        <QuoteShare url={url} via={SITE.twitter.slice(1)} containerSelector=".post-main .prose" />
 
-        {more.length > 0 && (
-          <section className="post-more container" aria-label="More writing">
-            <h2 className="post-more__title">More writing</h2>
+        {related.length > 0 && (
+          <section className="post-more container" aria-labelledby="related-title">
+            <h2 id="related-title" className="post-more__title">Keep reading</h2>
             <div className="post-list">
-              {more.map(p => (
+              {related.map(p => (
                 <Link key={p.slug} href={`/blog/${p.slug}`} className="post-row">
                   <time className="post-row__date" dateTime={p.date}>{formatPostDate(p.date, 'short')}</time>
                   <span className="post-row__title">{p.title}</span>
@@ -144,10 +178,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         )}
       </main>
       <Footer />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-      />
+      <JsonLd data={postGraph(post, countWords(post.content))} />
     </>
   );
 }
