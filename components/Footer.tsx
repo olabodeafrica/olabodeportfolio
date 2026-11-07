@@ -1,6 +1,21 @@
 export default function Footer() {
   return (
     <footer id="contact" className="footer">
+      <div className="footer__cta container">
+        <h2 className="footer__cta-title">Let&apos;s build something people actually use.</h2>
+        <div className="footer__cta-actions">
+          <a href="mailto:olabode.africa@gmail.com" className="btn btn--inverse">Email me</a>
+          <a
+            href="https://www.linkedin.com/in/olabodeafrica/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--inverse-ghost"
+          >
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+
       <div className="footer__inner container">
         <div className="footer__brand">
           <span className="nav__logo">Olabode</span>
@@ -10,9 +25,9 @@ export default function Footer() {
         <div className="footer__nav">
           <div>
             <h5>More</h5>
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="/#work">Work</a>
+            <a href="/blog">Writing</a>
+            <a href="/#about">About</a>
           </div>
           <div>
             <h5>Social</h5>

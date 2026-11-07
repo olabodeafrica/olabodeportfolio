@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { openCVModal } from './CVModal';
 
 function SunIcon() {
@@ -29,14 +30,13 @@ function MoonIcon() {
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
+  const pathname = usePathname();
+  const inBlog = pathname?.startsWith('/blog') ?? false;
 
-  // On mount, read stored preference; default to dark
+  // The layout's inline script has already applied the stored theme; sync state to it.
   useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    const isDark = stored ? stored === 'dark' : true;
-    setDark(isDark);
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    setDark(document.documentElement.getAttribute('data-theme') === 'dark');
   }, []);
 
   const toggleTheme = () => {
@@ -44,16 +44,17 @@ export default function Nav() {
     setDark(next);
     const theme = next ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try { localStorage.setItem('theme', theme); } catch {}
   };
 
   return (
     <header className="nav">
       <Link href="/" className="nav__logo">Olabode</Link>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+      <div className="nav__right">
         <nav className={`nav__links${open ? ' open' : ''}`}>
-          <a href="#work" onClick={() => setOpen(false)}>Work</a>
-          <a href="#about" onClick={() => setOpen(false)}>About</a>
+          <a href="/#work" onClick={() => setOpen(false)}>Work</a>
+          <Link href="/blog" className={inBlog ? 'active' : undefined} onClick={() => setOpen(false)}>Writing</Link>
+          <a href="/#about" onClick={() => setOpen(false)}>About</a>
           <button
             type="button"
             className="nav__cv-link"
@@ -61,8 +62,8 @@ export default function Nav() {
           >
             CV
           </button>
-          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
         </nav>
+        <a href="#contact" className="btn btn--primary btn--sm nav__cta">Get in touch</a>
         <button
           className="nav__theme-btn"
           aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}

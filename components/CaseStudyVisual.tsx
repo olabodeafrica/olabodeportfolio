@@ -62,14 +62,14 @@ export default function CaseStudyVisual({
         <div className="icon-cluster">
           <div className="icon-blob blue">
             <svg viewBox="0 0 60 60" width="54" height="54">
-              <circle cx="30" cy="30" r="28" fill="#29b6f6" />
-              <rect x="18" y="22" width="24" height="16" rx="3" fill="#fff" />
+              <circle cx="30" cy="30" r="28" fill="#141413" />
+              <rect x="18" y="22" width="24" height="16" rx="3" fill="#faf9f5" />
             </svg>
           </div>
           <div className="icon-blob teal">
             <svg viewBox="0 0 60 60" width="40" height="40">
-              <circle cx="30" cy="30" r="28" fill="#26c6da" />
-              <polyline points="18,36 26,26 34,32 42,22" stroke="#fff" strokeWidth="3" fill="none" />
+              <circle cx="30" cy="30" r="28" fill="#faf9f5" />
+              <polyline points="18,36 26,26 34,32 42,22" stroke="#141413" strokeWidth="3" fill="none" />
             </svg>
           </div>
         </div>

@@ -102,7 +102,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'One banking suite, five countries — retail, corporate, WhatsApp, voice and CRM.',
     description:
       "I own the OMNI Channel banking suite at Inlaks: retail and corporate internet banking, WhatsApp banking, voice banking, paperless branch operations and CRM, delivered to banks in Nigeria, Kenya, Tanzania, Liberia and Sierra Leone as a single platform. That means strategy, roadmap and pricing across six product lines — plus multi-bank and multi-currency localisation, core banking integration, and the adoption work that decides whether any of it actually gets used.",
-    bgColor: '#102a43',
+    bgColor: '#cc785c',
     visualType: 'board',
     layout: 'left',
   },
@@ -112,7 +112,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'Building the connectivity layer for healthcare in Africa.',
     description:
       "Joined Pierflow as API Product Manager to architect an API-first, AI-native platform connecting hospitals, payers, suppliers, and patients across Nigeria and West Africa. Designed the Paper-to-Digital Engine (6,000 FHIR-ready records/day), the HMS Integration API, and an embedded insurance distribution model. Led partnership development at World Health Expo Lagos 2026 — opening active conversations with LinkHMS, Healthcare Federation of Nigeria, GE Healthcare, PharmAccess, and Africa CDC.",
-    bgColor: '#0f2a3c',
+    bgColor: '#e3dacc',
     visualType: 'icons',
     layout: 'left',
     image: {
@@ -127,7 +127,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: "From tax filing to full corporate compliance — Nigeria's first digital-first tax platform.",
     description:
       "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and small businesses. In six months, with two engineers, we shipped five modules across tax registration, invoicing, advisory and tax clearance. I then expanded the business model beyond tax filing into know-your-business (KYB) services for corporates — adding Corporate Affairs Commission company registration and statutory filings, which became the platform's fastest-growing revenue line in its first months of trading.",
-    bgColor: '#fce8d5',
+    bgColor: '#ebdbbc',
     visualType: 'window',
     layout: 'right',
     image: { src: '/assets/Taxspire Team.jpeg', alt: 'Taxspire team' },
@@ -138,7 +138,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'A payment platform that crossed borders — and changed behaviour.',
     description:
       "Led CPay from concept to live deployment across Liberia and Sierra Leone — expanding into five new government ministries, departments and agencies (MDAs) and generating over $1M in revenue. The real challenge wasn't the build; it was getting institutions to change how they moved money. I drove the adoption strategy alongside the product.",
-    bgColor: '#d4edda',
+    bgColor: '#bcd1ca',
     visualType: 'window',
     layout: 'left',
     image: { src: '/assets/CPay.jpeg', alt: 'CPay product launch', position: 'center center' },
@@ -149,7 +149,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'Turning a one-off government tool into a $30M SaaS platform.',
     description:
       'Designed an Audit Management Information System for the Sierra Leone Government — then repositioned it as a multi-tenant SaaS product. Defined the product vision, mapped the customer journey from manual audit workflows to a digitised system, and aligned a cross-functional team on a roadmap targeting $30M in recurring revenue over five years.',
-    bgColor: '#e8eaf6',
+    bgColor: '#cbcadb',
     visualType: 'emoji',
     layout: 'right',
     image: { src: '/assets/Audit Followup - Sierra LEone.jpeg', alt: 'Audit follow-up session in Sierra Leone' },
@@ -160,7 +160,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'Health insurance that actually works for the people using it.',
     description:
       'Built a health insurance management suite for SUNU Health, serving operations across 17 countries. The focus was never just the software — it was redesigning the operational experience so that customer-facing teams could serve better, faster, and with less friction. Deep stakeholder mapping drove the product requirements.',
-    bgColor: '#fff8e1',
+    bgColor: '#e3dacc',
     visualType: 'chat',
     layout: 'left',
     image: { src: '/assets/SUNU Health Insurance.jpeg', alt: 'SUNU Health Insurance team', position: 'right center' },
@@ -171,7 +171,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'A health information system shipped 40% faster — without cutting corners.',
     description:
       'Owned the full product lifecycle for a Health Management Information System at Vatebra — from discovery through compliance sign-off and launch. Introduced CI/CD with Jenkins, reducing release turnaround by 40%. Managed legal, clinical, and engineering stakeholders to ensure the roadmap stayed compliant and customer-centric throughout.',
-    bgColor: '#e3f2fd',
+    bgColor: '#d4a27f',
     visualType: 'board',
     layout: 'right',
   },
@@ -181,7 +181,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: "The account-validation layer a central bank now runs on.",
     description:
       "Designed Account Mapper, the national account-validation and BBAN layer adopted by the Central Bank of Liberia under the World Bank-funded LIFT-P programme. I defined the Ingress and Name Enquiry API contracts, versioning and acceptance testing, drove integration across nine commercial banks, and had the architecture reviewed against digital public infrastructure standards — closing $400,000 of revenue leakage from payment errors and fraud along the way.",
-    bgColor: '#f3e5f5',
+    bgColor: '#c2cfdb',
     visualType: 'chart',
     layout: 'left',
     image: { src: '/assets/CPay Brainstorming.jpeg', alt: 'CPay team brainstorming session' },
@@ -192,7 +192,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'Rent collection that stops chasing people.',
     description:
       "Led product and transformation for Porchplus, a property management platform for landlords and tenants. I took the MVP from concept to live across web and mobile, then built a multi-channel rent collection system spanning WhatsApp, SMS, email and in-app, and integrated PiggyVest wallet APIs so payments never had to leave the product. Alongside it I standardised the property onboarding and tenant management workflows that had been living in people's heads.",
-    bgColor: '#fdf4e3',
+    bgColor: '#e8d5c4',
     visualType: 'chat',
     layout: 'left',
   },
@@ -202,7 +202,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     title: 'Register once, verify everywhere — KYB infrastructure for African businesses.',
     description:
       "As embedded Head of Product at Innkorp, I lead a know-your-business platform that registers companies with Nigeria's Corporate Affairs Commission and stores the resulting records in a vault the business owns — reusable for bank and fintech onboarding under itemised, revocable consent. I own the partner API surface: handoff contracts, payload encryption, webhook delivery guarantees, request logging and an embeddable verification widget, plus the commercial packaging that took it to fintech platforms including PiggyVest.",
-    bgColor: '#e8f5e9',
+    bgColor: '#c5cdb8',
     visualType: 'icons',
     layout: 'right',
   },

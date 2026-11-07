@@ -6,6 +6,9 @@ const CV_URL = '/assets/Olabode_Ogunfuye_CV.pdf';
 const CV_FILENAME = 'Olabode_Ogunfuye_CV.pdf';
 const OPEN_EVENT = 'open-cv-modal';
 
+// How many mounted CVModal instances are listening; pages without one fall back to the PDF.
+let listeners = 0;
+
 function isMobileViewport() {
   if (typeof window === 'undefined') return false;
   return window.innerWidth <= 700;
@@ -14,7 +17,7 @@ function isMobileViewport() {
 // Public trigger — call from anywhere in the app to open the modal
 export function openCVModal() {
   if (typeof window === 'undefined') return;
-  if (isMobileViewport()) {
+  if (isMobileViewport() || listeners === 0) {
     window.open(CV_URL, '_blank', 'noopener,noreferrer');
     return;
   }
@@ -60,7 +63,11 @@ export default function CVModal() {
   useEffect(() => {
     const handler = () => openModal();
     window.addEventListener(OPEN_EVENT, handler);
-    return () => window.removeEventListener(OPEN_EVENT, handler);
+    listeners += 1;
+    return () => {
+      window.removeEventListener(OPEN_EVENT, handler);
+      listeners -= 1;
+    };
   }, [openModal]);
 
   const modal = (
@@ -93,8 +100,8 @@ export default function CVModal() {
 
   return (
     <>
-      <button type="button" className="hero__cta hero__cta--ghost" onClick={openModal}>
-        VIEW CV
+      <button type="button" className="btn btn--secondary" onClick={openModal}>
+        View CV
       </button>
       {mounted && open && createPortal(modal, document.body)}
     </>

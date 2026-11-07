@@ -2,6 +2,7 @@ import Nav from '@/components/Nav';
 import CertModal from '@/components/CertModal';
 import CVModal from '@/components/CVModal';
 import CaseStudies from '@/components/CaseStudies';
+import LatestWriting from '@/components/LatestWriting';
 import Footer from '@/components/Footer';
 import ScrollEffects from '@/components/ScrollEffects';
 
@@ -14,7 +15,7 @@ export default function Home() {
       <section className="hero container fade-in">
         <div className="hero__grid">
           <div className="hero__copy">
-            <p className="hero__label">PRODUCT LEADER &middot; BANKING, PAYMENTS &amp; AGENTIC AI</p>
+            <p className="eyebrow hero__label">Product leader &middot; Banking, payments &amp; agentic AI</p>
             <h1 className="hero__headline">
               I&apos;m Olabode — I don&apos;t just ship products.<br />
               I make sure <span className="underline">people actually use them.</span>
@@ -27,7 +28,7 @@ export default function Home() {
               national switch interoperability. Lately, agentic AI workflows.
             </p>
             <div className="hero__cta-row">
-              <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+              <a href="#work" className="btn btn--primary">See my work</a>
               <CVModal />
             </div>
           </div>
@@ -43,10 +44,18 @@ export default function Home() {
       </section>
 
       {/* CASE STUDIES */}
+      <div className="section-head container fade-in">
+        <p className="eyebrow">Selected work</p>
+        <h2 className="section-head__title">Products that changed how institutions move money, data and people.</h2>
+      </div>
       <CaseStudies />
 
       {/* OTHER WORK */}
       <section className="other-work container">
+        <div className="section-head section-head--inline fade-in">
+          <p className="eyebrow">More work</p>
+          <h2 className="section-head__title">Beyond the case studies</h2>
+        </div>
         <div className="other-work__grid">
           <div className="other-work__item fade-in">
             <h4>Treasury &amp; Payment Rails</h4>
@@ -75,16 +84,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WRITING */}
+      <LatestWriting />
+
       {/* ABOUT */}
       <section id="about" className="about container fade-in">
         <div className="about__copy">
-          <h2>About me</h2>
+          <p className="eyebrow">About</p>
+          <h2>Adoption, not just delivery.</h2>
           <p>I&apos;m Olabode — a product leader with 12 years building and commercialising banking, payments, and government technology across six African markets: Nigeria, Kenya, Tanzania, Liberia, Sierra Leone, and São Tomé and Príncipe.</p>
           <p>Day to day I own the OMNI Channel banking suite at Inlaks and the payment infrastructure beneath it — including Account Mapper, the account-validation layer the Central Bank of Liberia adopted and nine commercial banks now integrate with. Alongside that I work zero-to-one: embedded Head of Product at Innkorp building KYB infrastructure, and API product lead at Pierflow, where agentic extraction pipelines turn paper records into standards-compliant health data.</p>
           <p>What sets me apart is how I think about adoption, not just delivery. The best product in the world fails if it doesn&apos;t change how people work. So I design for behaviour change from the start — mapping journeys, engaging stakeholders early, and measuring outcomes well beyond go-live.</p>
           <p>I hold a First Class degree in Computer Science, a Lean Six Sigma Black Belt, and a Professional Scrum Master certification. I lead with data, move with urgency, and build with people in mind.</p>
         </div>
         <div className="about__skills">
+          <p className="about__skills-label">Capabilities</p>
           {[
             'Product Strategy', 'Roadmap Management', 'Pricing & Packaging',
             'OMNI Channel Banking', 'ACH / RTGS / Switch', 'Core Banking Integration',

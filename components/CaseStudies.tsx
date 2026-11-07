@@ -23,7 +23,7 @@ export default function CaseStudies() {
                   </Link>
                 </h2>
                 <p>{card.description}</p>
-                <Link href={`/work/${card.slug}`} className="link">View &rarr;</Link>
+                <Link href={`/work/${card.slug}`} className="link-arrow">Read the case study <span aria-hidden="true">&rarr;</span></Link>
               </div>
             </>
           ) : (
@@ -36,7 +36,7 @@ export default function CaseStudies() {
                   </Link>
                 </h2>
                 <p>{card.description}</p>
-                <Link href={`/work/${card.slug}`} className="link">View &rarr;</Link>
+                <Link href={`/work/${card.slug}`} className="link-arrow">Read the case study <span aria-hidden="true">&rarr;</span></Link>
               </div>
               <Link href={`/work/${card.slug}`} className="case-study__visual" style={{ background: card.bgColor }}>
                 <CaseStudyVisual type={card.visualType} bgColor={card.bgColor} image={card.image} />
