@@ -1,6 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Icon, copyText } from './ShareBar';
+import { track } from '@/lib/analytics';
 
 type Props = { url: string; via?: string; containerSelector: string };
 type Pos = { top: number; left: number; text: string };
@@ -72,17 +73,17 @@ export default function QuoteShare({ url, via, containerSelector }: Props) {
       onMouseDown={e => e.preventDefault() /* keep the selection */}
     >
       <span className="quote-share__label">Share quote</span>
-      <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="Share quote on LinkedIn" title="LinkedIn">
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="Share quote on LinkedIn" title="LinkedIn" onClick={() => track('quote_share_linkedin')}>
         {Icon.linkedin}
       </a>
-      <a href={x} target="_blank" rel="noopener noreferrer" aria-label="Share quote on X" title="X">
+      <a href={x} target="_blank" rel="noopener noreferrer" aria-label="Share quote on X" title="X" onClick={() => track('quote_share_x')}>
         {Icon.x}
       </a>
       <button
         type="button"
         aria-label={copied ? 'Quote copied' : 'Copy quote with link'}
         title={copied ? 'Copied' : 'Copy quote'}
-        onClick={async () => { if (await copyText(`${quote}\n\n${url}`)) setCopied(true); }}
+        onClick={async () => { if (await copyText(`${quote}\n\n${url}`)) { setCopied(true); track('quote_share_copy'); } }}
       >
         {copied ? Icon.check : Icon.link}
       </button>

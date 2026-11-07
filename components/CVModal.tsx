@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { track } from '@/lib/analytics';
 
 const CV_URL = '/assets/Olabode_Ogunfuye_CV.pdf';
 const CV_FILENAME = 'Olabode_Ogunfuye_CV.pdf';
@@ -18,6 +19,7 @@ function isMobileViewport() {
 export function openCVModal() {
   if (typeof window === 'undefined') return;
   if (isMobileViewport() || listeners === 0) {
+    track('cv_open'); // the modal path tracks inside openModal
     window.open(CV_URL, '_blank', 'noopener,noreferrer');
     return;
   }
@@ -43,6 +45,7 @@ export default function CVModal() {
   }, []);
 
   const openModal = useCallback(() => {
+    track('cv_open');
     if (isMobile) {
       window.open(CV_URL, '_blank', 'noopener,noreferrer');
       return;

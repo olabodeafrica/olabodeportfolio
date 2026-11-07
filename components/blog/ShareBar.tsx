@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { track } from '@/lib/analytics';
 
 type Props = { url: string; title: string; via?: string; showComments?: boolean };
 
@@ -88,13 +89,14 @@ export default function ShareBar({ url, title, via, showComments = false }: Prop
 
   const onCopy = async () => {
     if (await copyText(url)) {
+      track('share_copy_link');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
   const onNativeShare = async () => {
-    try { await navigator.share({ title, url }); } catch { /* dismissed */ }
+    try { await navigator.share({ title, url }); track('share_native'); } catch { /* dismissed */ }
   };
 
   const item = (key: keyof typeof links, label: string) => (
@@ -105,6 +107,7 @@ export default function ShareBar({ url, title, via, showComments = false }: Prop
       rel="noopener noreferrer"
       aria-label={`Share on ${label}`}
       title={label}
+      onClick={() => track(`share_${key}`)}
     >
       {Icon[key]}
     </a>

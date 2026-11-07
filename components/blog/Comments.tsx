@@ -1,5 +1,6 @@
 'use client';
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
+import { track } from '@/lib/analytics';
 
 type Comment = {
   id: string;
@@ -92,6 +93,7 @@ function CommentForm({
       }
       try { localStorage.setItem(STORE_KEY, JSON.stringify({ name, email })); } catch {}
       setBody('');
+      track(parentId ? 'comment_reply' : 'comment_posted');
       onPosted(data.comment as Comment, data.status === 'pending');
     } catch {
       setError('Network error — please try again.');

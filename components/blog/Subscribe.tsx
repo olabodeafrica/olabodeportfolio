@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState, type FormEvent } from 'react';
+import { track } from '@/lib/analytics';
 
 type Props = { source: string; compact?: boolean };
 
@@ -27,6 +28,7 @@ export default function Subscribe({ source, compact = false }: Props) {
         setState('error');
         return;
       }
+      track('subscribe');
       setState('done');
     } catch {
       setError('Network error — please try again.');

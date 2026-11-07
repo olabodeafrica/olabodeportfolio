@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Inter, Playfair_Display, Source_Serif_4 } from 'next/font/google';
 import { PERSON, SITE, alternates } from '@/lib/site';
+import Clarity from '@/components/Clarity';
 import './globals.css';
 
 // Public site: editorial serif for display + long-form copy, geometric sans for UI.
@@ -88,7 +89,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Clarity />
+      </body>
     </html>
   );
 }

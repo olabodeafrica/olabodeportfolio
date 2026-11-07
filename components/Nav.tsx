@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { openCVModal } from './CVModal';
+import { track } from '@/lib/analytics';
 
 function SunIcon() {
   return (
@@ -63,7 +64,7 @@ export default function Nav() {
             CV
           </button>
         </nav>
-        <a href="#contact" className="btn btn--primary btn--sm nav__cta">Get in touch</a>
+        <a href="#contact" className="btn btn--primary btn--sm nav__cta" onClick={() => track('contact_nav_click')}>Get in touch</a>
         <button
           className="nav__theme-btn"
           aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
