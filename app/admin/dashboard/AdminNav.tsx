@@ -11,9 +11,12 @@ const navItems = [
   { href: '/admin/dashboard/commitments', label: 'Commitments', icon: '🗂️' },
   { href: '/admin/dashboard/integrations', label: 'Integrations', icon: '🔌' },
   { href: '/admin/dashboard/reports', label: 'Reports', icon: '📊' },
+  { href: '/admin/dashboard/comments', label: 'Comments', icon: '💬' },
 ];
 
-function NavLinks({ pathname, onClick }: { pathname: string; onClick?: () => void }) {
+type Badges = Record<string, number>;
+
+function NavLinks({ pathname, onClick, badges = {} }: { pathname: string; onClick?: () => void; badges?: Badges }) {
   return (
     <>
       {navItems.map(item => {
@@ -29,6 +32,9 @@ function NavLinks({ pathname, onClick }: { pathname: string; onClick?: () => voi
           >
             <span className="admin-nav-item__icon">{item.icon}</span>
             {item.label}
+            {(badges[item.href] ?? 0) > 0 && !active && (
+              <span className="admin-nav-item__badge" aria-label={`${badges[item.href]} new`}>{badges[item.href]}</span>
+            )}
           </Link>
         );
       })}
@@ -36,7 +42,7 @@ function NavLinks({ pathname, onClick }: { pathname: string; onClick?: () => voi
   );
 }
 
-export default function AdminNav({ userEmail }: { userEmail: string }) {
+export default function AdminNav({ userEmail, badges = {} }: { userEmail: string; badges?: Badges }) {
   const pathname = usePathname();
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -65,7 +71,7 @@ export default function AdminNav({ userEmail }: { userEmail: string }) {
           <div className="admin-sidebar__badge">Admin</div>
         </div>
         <nav className="admin-sidebar__nav">
-          <NavLinks pathname={pathname} />
+          <NavLinks pathname={pathname} badges={badges} />
         </nav>
         <SidebarFooter />
       </aside>
@@ -88,7 +94,7 @@ export default function AdminNav({ userEmail }: { userEmail: string }) {
               <div className="admin-sidebar__badge">Admin</div>
             </div>
             <nav className="admin-sidebar__nav">
-              <NavLinks pathname={pathname} onClick={() => setDrawerOpen(false)} />
+              <NavLinks pathname={pathname} badges={badges} onClick={() => setDrawerOpen(false)} />
             </nav>
             <SidebarFooter />
           </div>
@@ -108,7 +114,10 @@ export default function AdminNav({ userEmail }: { userEmail: string }) {
                 href={item.href}
                 className={`admin-bottom-tab${active ? ' active' : ''}`}
               >
-                <span className="admin-bottom-tab__icon">{item.icon}</span>
+                <span className="admin-bottom-tab__icon">
+                  {item.icon}
+                  {(badges[item.href] ?? 0) > 0 && !active && <span className="admin-bottom-tab__dot" aria-label="New" />}
+                </span>
                 {item.label}
               </Link>
             );

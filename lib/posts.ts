@@ -15,6 +15,8 @@ export type PostMeta = {
   tags: string[];
   cover?: string;
   readingTime: string;
+  /** Optional question shown above the comment form. */
+  discussionPrompt?: string;
 };
 
 export type Post = PostMeta & { content: string };
@@ -51,6 +53,7 @@ export function getPost(slug: string): Post | null {
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     cover: data.cover ? String(data.cover) : undefined,
     readingTime: data.readingTime ? String(data.readingTime) : estimateReadingTime(content),
+    discussionPrompt: data.discussionPrompt ? String(data.discussionPrompt) : undefined,
   };
 }
 

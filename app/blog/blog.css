@@ -183,7 +183,7 @@
     grid-template-columns: var(--toc-w) minmax(0, var(--read-w)) var(--toc-w);
     column-gap: clamp(2rem, 4vw, 4rem);
   }
-  .post-layout > .prose { grid-column: 2; }
+  .post-layout > .post-main { grid-column: 2; }
   .post-toc {
     display: block;
     grid-column: 1;
@@ -242,6 +242,8 @@
 }
 
 /* ---------- Prose ---------- */
+.post-main { min-width: 0; }
+
 .prose {
   font-family: var(--font-reading);
   font-size: 1.2rem;
@@ -408,3 +410,308 @@
   .prose h2 { margin-top: 3.5rem; }
   .post-figure { margin: 2rem 0; }
 }
+
+/* ---------- Share bar ---------- */
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+.post-head .share-bar { margin-top: 1.5rem; }
+.share-bar__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.share-bar__buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.share-btn:hover { background: var(--surface); border-color: var(--line-strong); color: var(--ink); }
+.share-btn.is-done { color: var(--accent-ink); border-color: var(--accent); }
+.share-btn--wide {
+  width: auto;
+  padding: 0 1rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.share-bar__comments {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: color 0.2s;
+}
+.share-bar__comments:hover { color: var(--accent-ink); }
+
+.post-share-end {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+.post-share-end__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 !important;
+}
+.post-share-end .share-bar__label { display: none; }
+.post-share-end .share-btn { background: var(--bg); border-color: transparent; }
+.post-share-end .share-btn:hover { border-color: var(--line-strong); }
+
+/* ---------- Highlight-to-share toolbar ---------- */
+.quote-share {
+  position: absolute;
+  z-index: 120;
+  transform: translate(-50%, -100%);
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.3rem 0.35rem 0.3rem 0.85rem;
+  background: var(--inverse-bg);
+  color: var(--inverse-ink);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(20, 20, 19, 0.18);
+  font-family: var(--font-body);
+  animation: quoteIn 0.18s var(--ease);
+}
+.quote-share::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--inverse-bg);
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+.quote-share__label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--inverse-ink-2);
+  margin-right: 0.35rem;
+  white-space: nowrap;
+}
+.quote-share a,
+.quote-share button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--inverse-ink);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.quote-share a:hover,
+.quote-share button:hover { background: rgba(250, 249, 245, 0.12); color: var(--accent); }
+@keyframes quoteIn {
+  from { opacity: 0; transform: translate(-50%, calc(-100% + 6px)); }
+  to { opacity: 1; transform: translate(-50%, -100%); }
+}
+.prose ::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); }
+
+/* ---------- Comments ---------- */
+.comments {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-body);
+}
+.comments__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 100px;
+}
+.comments { scroll-margin-top: 90px; }
+.comments__prompt {
+  font-family: var(--font-reading);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin-bottom: 1.75rem;
+  max-width: 60ch;
+}
+.comments__empty,
+.comments__notice { font-size: 0.95rem; color: var(--ink-3); margin-top: 1.75rem; }
+.comments__notice {
+  color: var(--ink);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.comment-form {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.comment-form--reply { margin-top: 1rem; padding: 1rem; }
+.comment-form__body,
+.comment-form input {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.comment-form__body { resize: vertical; min-height: 96px; line-height: 1.55; display: block; }
+.comment-form__body:focus,
+.comment-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.comment-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.comment-form__field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 0.35rem;
+}
+.comment-form__field label span { font-weight: 400; color: var(--ink-3); }
+.comment-form__hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.comment-form__error {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #b3261e;
+}
+[data-theme="dark"] .comment-form__error { color: #f2a59f; }
+.comment-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.comment-form__note { font-size: 0.85rem; color: var(--ink-3); }
+.comment-form__buttons { display: flex; gap: 0.5rem; margin-left: auto; }
+.comment-form .btn:disabled { opacity: 0.45; cursor: default; }
+
+.comment-list,
+.comment-replies { list-style: none; }
+.comment-list { margin-top: 2rem; }
+.comment {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 0.9rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.comment-replies { margin-top: 0.5rem; }
+.comment-replies .comment {
+  grid-template-columns: 32px 1fr;
+  padding: 1rem 0 0.25rem;
+  border-top: 0;
+}
+.comment__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #141413;
+}
+.comment-replies .comment__avatar { width: 32px; height: 32px; font-size: 0.75rem; }
+.comment--author > .comment__avatar { color: #faf9f5; }
+.comment__main { min-width: 0; }
+.comment__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.6rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.875rem;
+}
+.comment__name { font-weight: 600; color: var(--ink); }
+.comment__badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+}
+.comment__meta time { color: var(--ink-3); }
+.comment__body {
+  font-family: var(--font-reading);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.comment__reply {
+  margin-top: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.comment__reply:hover { color: var(--accent-ink); }
+
+@media (max-width: 600px) {
+  .comment-form__row { grid-template-columns: 1fr; }
+  .share-bar__comments { margin-left: 0; }
+  .post-share-end { padding: 1.25rem; }
+}
+
+/* Share buttons inside the article shouldn't pick up prose link styling */
+.prose .share-btn { text-decoration: none; color: var(--ink-2); }
+.prose .share-btn:hover { color: var(--ink); }

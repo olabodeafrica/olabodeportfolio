@@ -7,6 +7,9 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { mdxComponents } from '@/components/mdx-components';
 import PostToc from '@/components/PostToc';
+import ShareBar from '@/components/blog/ShareBar';
+import QuoteShare from '@/components/blog/QuoteShare';
+import Comments from '@/components/blog/Comments';
 import { formatPostDate, getAllPosts, getPost, getPostSlugs, getToc } from '@/lib/posts';
 import '../blog.css';
 
@@ -56,6 +59,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const toc = getToc(post.content);
+  const url = `${SITE}/blog/${slug}`;
   const more = getAllPosts().filter(p => p.slug !== slug).slice(0, 3);
 
   const jsonLd = {
@@ -66,7 +70,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     datePublished: post.date,
     author: { '@type': 'Person', name: post.author, url: SITE },
     image: post.cover ? `${SITE}${post.cover}` : undefined,
-    mainEntityOfPage: `${SITE}/blog/${slug}`,
+    mainEntityOfPage: url,
   };
 
   return (
@@ -86,6 +90,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <span className="post-byline__name">{post.author}</span>
             <span className="post-byline__meta">{post.readingTime}</span>
           </div>
+          <ShareBar url={url} title={post.title} via="olabode_africa" showComments />
         </header>
 
         {post.cover && (
@@ -98,6 +103,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className="post-layout container">
           {toc.length > 1 && <PostToc items={toc} />}
 
+          <div className="post-main">
           <article className="prose">
             <MDXRemote
               source={post.content}
@@ -110,8 +116,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 {post.tags.map(t => <li key={t}>{t}</li>)}
               </ul>
             )}
+
+            <div className="post-share-end">
+              <p className="post-share-end__text">Found this useful? Share it with someone who&apos;d enjoy it.</p>
+              <ShareBar url={url} title={post.title} via="olabode_africa" />
+            </div>
           </article>
+
+          <Comments slug={slug} prompt={post.discussionPrompt} />
+          </div>
         </div>
+        <QuoteShare url={url} via="olabode_africa" containerSelector=".post-main .prose" />
 
         {more.length > 0 && (
           <section className="post-more container" aria-label="More writing">
