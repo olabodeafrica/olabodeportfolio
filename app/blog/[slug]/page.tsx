@@ -10,6 +10,7 @@ import { mdxComponents } from '@/components/mdx-components';
 import PostToc from '@/components/PostToc';
 import ShareBar from '@/components/blog/ShareBar';
 import QuoteShare from '@/components/blog/QuoteShare';
+import ImageLightbox from '@/components/blog/ImageLightbox';
 import Comments from '@/components/blog/Comments';
 import AuthorBox from '@/components/blog/AuthorBox';
 import Subscribe from '@/components/blog/Subscribe';
@@ -161,6 +162,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </div>
         <QuoteShare url={url} via={SITE.twitter.slice(1)} containerSelector=".post-main .prose" />
+        <ImageLightbox selector=".post-cover img, .post-main .prose .post-figure img" />
 
         {related.length > 0 && (
           <section className="post-more container" aria-labelledby="related-title">
